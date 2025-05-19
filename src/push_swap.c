@@ -1,4 +1,5 @@
 #include "../includes/libft.h"
+#include "../includes/push_swap.h"
 
 int	is_int(char *num)
 {
@@ -51,6 +52,8 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 	
+	radix_sort(&s_a, argc - 1);
+
 	while (i < argc - 1)
 	{
 		printf("%i\n",s_a[i]);

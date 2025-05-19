@@ -22,7 +22,8 @@ OBJS_DIR		= ./objs/
 LIBFT_DIR		= ./libft/
 
 # Source Files
-SRC_FILES = push_swap.c
+SRC_FILES = push_swap.c \
+			sorting_algos.c
 
 SRC_FILES_BONUS = 
 
