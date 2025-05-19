@@ -22,7 +22,7 @@ OBJS_DIR		= ./objs/
 LIBFT_DIR		= ./libft/
 
 # Source Files
-SRC_FILES = 
+SRC_FILES = push_swap.c
 
 SRC_FILES_BONUS = 
 
@@ -53,7 +53,7 @@ $(OBJS_DIR)%.o: $(SRC_DIR_BONUS)%.c
 
 # Creating Objects dir
 $(OBJS_DIR):
-	makdir -p $(OBJS_DIR)
+	mkdir -p $(OBJS_DIR)
 
 clean:
 	@echo ""
