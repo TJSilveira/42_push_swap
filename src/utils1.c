@@ -65,16 +65,21 @@ t_s	*create_node(int num, int start)
 		exit (1);
 	node->num = num;
 	node->start = start;
-	node->next = NULL;
+	node->next = node;
 	return (node);
 }
 
 void	print_stack(t_s *first_node)
 {
 	ft_putstr_fd("This is the current stack:\n", 1);
+	if (first_node == NULL)
+	{
+		ft_putstr_fd("Empty Stack\n", 1);
+		return ;
+	}
 	ft_putnbr_fd(first_node->num, 1);
 	ft_putstr_fd("\n", 1);
-	if (first_node->next == NULL)
+	if (first_node->next == first_node)
 		return ;
 	first_node = first_node->next;
 	while (first_node->start == 0)
