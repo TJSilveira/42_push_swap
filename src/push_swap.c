@@ -51,9 +51,18 @@ int main(int argc, char *argv[])
 		ft_putstr_fd("Error importing the array\n", 2);
 		return (1);
 	}
+
+	i = 0;
+	while (i < argc - 1)
+	{
+		printf("%i\n",s_a[i]);
+		i++;
+	}
 	
 	radix_sort(&s_a, argc - 1);
 
+	printf("After the sort\n");
+	i = 0;
 	while (i < argc - 1)
 	{
 		printf("%i\n",s_a[i]);

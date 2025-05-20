@@ -38,52 +38,55 @@ int	find_max(int *array, int size)
 	return (digits);
 }
 
+void	prefix_sum_sort(int **array, int size, int *output, int exp_max)
+{
+	int	counter[19];
+	int	i;
+	int	exp_cur;
+
+	exp_cur = 0;
+
+	while (exp_cur <= exp_max)
+	{
+		i = -1;
+		while (++i < 19)
+			counter[i] = 0;
+		i = -1;
+		while (++i < size)
+			counter[(((*array)[i] / ft_10power(exp_cur)) % 10) + 9]++;
+		i = 0;
+		while (++i < 19)
+			counter[i] += counter[i - 1];
+		i = -1;
+		while (++i < 19)
+			counter[i]--;
+		i = 1;
+		while (i <= size)
+		{
+			output[counter[(((*array)[size - i] / ft_10power(exp_cur)) % 10) + 9]] = (*array)[size - i];
+			counter[(((*array)[size - i] / ft_10power(exp_cur)) % 10) + 9]--;
+			i++;
+		}
+		i = 0;
+		while (i < size)
+		{
+			(*array)[i] =  output[i];
+			i++;
+		}
+		exp_cur++;
+	}
+}
+
 void	radix_sort(int **array, int size)
 {
 	int	*output;
-	int	counter[19];
-	int	i;
-	// int	exp_max;
-	int	exp_cur;
+	int	exp_max;
 
 	output = malloc(sizeof(int) * size);
 	if (!output)
 		exit (1);
-	i = -1;
-	while (++i < 19)
-		counter[i] = 0;
-	// exp_max = find_max(*array, size);
-	exp_cur = 0;
-	i = -1;
-	while (++i < size)
-		counter[(((*array)[i] / ft_10power(exp_cur)) % 10) + 9]++;
-	i = 1;
-	while (i < 19)
-	{
-		counter[i] += counter[i - 1];
-		i++;
-	}
-	i = 0;
-	while (i < 19)
-	{
-		counter[i]--;
-		i++;
-	}
-	i = 1;
-	while (i <= size)
-	{
-		output[counter[(((*array)[size - i] / ft_10power(exp_cur)) % 10) + 9]] = (*array)[size - i];
-		counter[(((*array)[size - i] / ft_10power(exp_cur)) % 10) + 9]--;
-		i++;
-	}
-
-	i = 0;
-	while (i < size)
-	{
-		printf("%i\n", output[i]);
-		i++;
-	}
-
+	exp_max = find_max(*array, size);
+	prefix_sum_sort(array, size, output, exp_max);	
 
 	// i = -1;
 	// printf("Start of the counter\n");
