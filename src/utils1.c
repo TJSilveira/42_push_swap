@@ -30,3 +30,55 @@ void	indexator(int *array, int size)
 		array[i] = output[i];
 	free(output);
 }
+
+t_s	*stack_loader(int *array, int size)
+{
+	int	i;
+	t_s *current_node;
+	t_s *first_node;
+
+	i = 0;
+	if (size == 1)
+		return (create_node(array[0], 1));
+	if (i == 0)
+		first_node = create_node(array[i], 1);
+	current_node = first_node;
+	while (++i < size - 1)
+	{
+		current_node->next = create_node(array[i],0);
+		current_node = current_node->next;
+	}
+	if (i == size - 1)
+	{
+		current_node->next = create_node(array[i],0);
+		current_node->next->next = first_node;
+	}
+	return (first_node);
+}
+
+t_s	*create_node(int num, int start)
+{
+	t_s	*node;
+
+	node = malloc(sizeof(t_s));
+	if (!node)
+		exit (1);
+	node->num = num;
+	node->start = start;
+	node->next = NULL;
+	return (node);
+}
+
+void	print_stack(t_s *first_node)
+{
+	ft_putstr_fd("This is the current stack:\n", 1);
+	ft_putnbr_fd(first_node->num, 1);
+	ft_putstr_fd("\n", 1);
+	first_node = first_node->next;
+	while (first_node->start == 0)
+	{
+		ft_putnbr_fd(first_node->num, 1);
+		ft_putstr_fd("\n", 1);
+		first_node = first_node->next;
+	}
+}

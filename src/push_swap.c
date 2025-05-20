@@ -41,12 +41,14 @@ int	*data_loader(int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
-	int	*s_a;
+	int	*arr_a;
+	t_s	*s_a;
+	t_s	*s_b;
 	int	i;
 
 	i = 0;
-	s_a = data_loader(argc, argv);
-	if (!s_a)
+	arr_a = data_loader(argc, argv);
+	if (!arr_a)
 	{
 		ft_putstr_fd("Error importing the array\n", 2);
 		return (1);
@@ -55,19 +57,15 @@ int main(int argc, char *argv[])
 	i = 0;
 	while (i < argc - 1)
 	{
-		printf("%i\n",s_a[i]);
+		printf("%i\n",arr_a[i]);
 		i++;
 	}
 	
 	printf("After the indexator\n");
-	indexator(s_a, argc - 1);
-
-	i = 0;
-	while (i < argc - 1)
-	{
-		printf("%i\n",s_a[i]);
-		i++;
-	}
-	
+	indexator(arr_a, argc - 1);
+	s_a = stack_loader(arr_a, argc - 1);
+	s_b = NULL;
+	free(arr_a);
+	print_stack(s_a);	
 	return 0;
 }
