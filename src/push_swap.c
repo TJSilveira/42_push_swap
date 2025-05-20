@@ -59,9 +59,9 @@ int main(int argc, char *argv[])
 		i++;
 	}
 	
-	radix_sort(&s_a, argc - 1);
+	printf("After the indexator\n");
+	indexator(s_a, argc - 1);
 
-	printf("After the sort\n");
 	i = 0;
 	while (i < argc - 1)
 	{
