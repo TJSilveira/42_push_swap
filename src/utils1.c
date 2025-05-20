@@ -89,3 +89,17 @@ void	print_stack(t_s *first_node)
 		first_node = first_node->next;
 	}
 }
+
+int	is_sorted(t_s *s)
+{
+	if (s->next == s || s == NULL)
+		return (1);
+	s = s->next;
+	while (s->next->start == 0)
+	{
+		if (s->num > s->next->num)
+			return (0);
+		s = s->next;
+	}
+	return (1);
+}

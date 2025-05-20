@@ -67,6 +67,9 @@ int main(int argc, char *argv[])
 	s_b = NULL;
 	free(arr_a);
 	print_stack(s_a);
+
+	printf("Is it sorted? %i\n", is_sorted(s_a));
+
 	push(&s_a, &s_b, "a");
 	printf("After pa\n");
 	print_stack(s_a);
