@@ -29,5 +29,8 @@ void	push_dest(t_s **origin_s, t_s **dest_s, t_s **temp_o, t_s **temp_d);
 /* operations_swap.c */
 char	*swap(t_s **s, char *name);
 
+/* operations_rotate.c*/
+char	*rotate(t_s **s, char *name);
+char	*rev_rotate(t_s **s, char *name);
 
 #endif

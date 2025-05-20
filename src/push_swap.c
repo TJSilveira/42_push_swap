@@ -107,5 +107,25 @@ int main(int argc, char *argv[])
 	print_stack(s_a);
 	print_stack(s_b);
 
+	rotate(&s_a, "a");
+	printf("After ra\n");
+	print_stack(s_a);
+	print_stack(s_b);
+
+	rotate(&s_a, "a");
+	printf("After ra\n");
+	print_stack(s_a);
+	print_stack(s_b);
+
+	rev_rotate(&s_a, "a");
+	printf("After rra\n");
+	print_stack(s_a);
+	print_stack(s_b);
+
+	rev_rotate(&s_a, "a");
+	printf("After rra\n");
+	print_stack(s_a);
+	print_stack(s_b);
+
 	return 0;
 }

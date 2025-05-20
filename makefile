@@ -26,7 +26,8 @@ SRC_FILES = push_swap.c \
 			sorting_algos.c \
 			utils1.c \
 			operations_push.c \
-			operations_swap.c
+			operations_swap.c \
+			operations_rotate.c
 
 SRC_FILES_BONUS = 
 
