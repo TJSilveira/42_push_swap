@@ -97,23 +97,13 @@ int main(int argc, char *argv[])
 	print_stack(s_a);
 	print_stack(s_b);
 
-	push(&s_b, &s_a, "b");
-	printf("After pb\n");
+	swap(&s_b, "b");
+	printf("After sb\n");
 	print_stack(s_a);
 	print_stack(s_b);
 
-	push(&s_b, &s_a, "b");
-	printf("After pb\n");
-	print_stack(s_a);
-	print_stack(s_b);
-
-	push(&s_b, &s_a, "b");
-	printf("After pb\n");
-	print_stack(s_a);
-	print_stack(s_b);
-
-	push(&s_b, &s_a, "b");
-	printf("After pb\n");
+	swap(&s_a, "a");
+	printf("After sa\n");
 	print_stack(s_a);
 	print_stack(s_b);
 
