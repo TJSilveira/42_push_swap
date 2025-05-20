@@ -74,6 +74,8 @@ void	print_stack(t_s *first_node)
 	ft_putstr_fd("This is the current stack:\n", 1);
 	ft_putnbr_fd(first_node->num, 1);
 	ft_putstr_fd("\n", 1);
+	if (first_node->next == NULL)
+		return ;
 	first_node = first_node->next;
 	while (first_node->start == 0)
 	{

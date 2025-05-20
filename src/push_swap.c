@@ -66,6 +66,56 @@ int main(int argc, char *argv[])
 	s_a = stack_loader(arr_a, argc - 1);
 	s_b = NULL;
 	free(arr_a);
-	print_stack(s_a);	
+	print_stack(s_a);
+	push(&s_a, &s_b, "a");
+	printf("After pa\n");
+	print_stack(s_a);
+	print_stack(s_b);
+	
+	push(&s_a, &s_b, "a");
+	printf("After pa\n");
+	print_stack(s_a);
+	print_stack(s_b);
+
+	push(&s_a, &s_b, "a");
+	printf("After pa\n");
+	print_stack(s_a);
+	print_stack(s_b);
+
+	push(&s_a, &s_b, "a");
+	printf("After pa\n");
+	print_stack(s_a);
+	print_stack(s_b);
+
+	push(&s_a, &s_b, "a");
+	printf("After pa\n");
+	print_stack(s_a);
+	print_stack(s_b);
+
+	push(&s_b, &s_a, "b");
+	printf("After pb\n");
+	print_stack(s_a);
+	print_stack(s_b);
+
+	push(&s_b, &s_a, "b");
+	printf("After pb\n");
+	print_stack(s_a);
+	print_stack(s_b);
+
+	push(&s_b, &s_a, "b");
+	printf("After pb\n");
+	print_stack(s_a);
+	print_stack(s_b);
+
+	push(&s_b, &s_a, "b");
+	printf("After pb\n");
+	print_stack(s_a);
+	print_stack(s_b);
+
+	push(&s_b, &s_a, "b");
+	printf("After pb\n");
+	print_stack(s_a);
+	print_stack(s_b);
+
 	return 0;
 }

@@ -21,4 +21,7 @@ t_s		*stack_loader(int *array, int size);
 t_s		*create_node(int num, int start);
 void	print_stack(t_s *first_node);
 
+/* Operations */
+char	*push(t_s **origin_s, t_s **dest_s, char *name);
+
 #endif

@@ -24,7 +24,8 @@ LIBFT_DIR		= ./libft/
 # Source Files
 SRC_FILES = push_swap.c \
 			sorting_algos.c \
-			utils1.c
+			utils1.c \
+			operations.c
 
 SRC_FILES_BONUS = 
 
