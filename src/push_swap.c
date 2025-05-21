@@ -44,6 +44,7 @@ int main(int argc, char *argv[])
 	int	*arr_a;
 	t_s	*s_a;
 	t_s	*s_b;
+	t_stacks *list;
 
 	arr_a = data_loader(argc, argv);
 	if (!arr_a)
@@ -52,13 +53,15 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 
-	
+	/* TODO: Bundle up all the setup under the list loader function*/
 	printf("After the indexator\n");
 	indexator(arr_a, argc - 1);
 	s_a = stack_loader(arr_a, argc - 1);
 	s_b = NULL;
+	list = list_loader(s_a, s_b);
 	free(arr_a);
-	print_stacks(s_a,s_b, argc -1);
+
+	print_stacks(list->a, list->b, argc -1);
 	/* tests for input creation, operations and display */
 	printf("Is it sorted? %i\n", is_sorted(s_a));
 

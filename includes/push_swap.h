@@ -11,6 +11,15 @@ typedef struct s_s
 	struct s_s	*next;
 }	t_s;
 
+typedef struct s_stacks
+{
+	t_s	*a;
+	t_s	*b;
+	int	len_a;
+	int	len_b;
+	int	cheapest_index;
+}	t_stacks;
+
 /* sorting_algos.c */
 void	radix_sort(int **array, int size);
 int		ft_10power(int exp);
@@ -23,6 +32,9 @@ t_s		*stack_loader(int *array, int size);
 t_s		*create_node(int num, int start);
 int		is_sorted(t_s *s);
 int		stack_length(t_s *s_a);
+
+/* utils2.c */
+t_stacks	*list_loader(t_s *s_a, t_s *s_b);
 
 /* operations_push.c */
 char	*push(t_s **origin_s, t_s **dest_s, char *name);

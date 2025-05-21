@@ -25,6 +25,7 @@ LIBFT_DIR		= ./libft/
 SRC_FILES = push_swap.c \
 			sorting_algos.c \
 			utils1.c \
+			utils2.c \
 			operations_push.c \
 			operations_swap.c \
 			operations_rotate.c \
