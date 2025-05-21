@@ -19,7 +19,6 @@ void	prefix_sum_sort(int **array, int size, int *output, int exp_max);
 void	indexator(int *array, int size);
 t_s		*stack_loader(int *array, int size);
 t_s		*create_node(int num, int start);
-void	print_stack(t_s *first_node);
 int		is_sorted(t_s *s);
 
 /* operations_push.c */
@@ -33,5 +32,8 @@ char	*swap(t_s **s, char *name);
 /* operations_rotate.c*/
 char	*rotate(t_s **s, char *name);
 char	*rev_rotate(t_s **s, char *name);
+
+/* print_stacks.c*/
+void	print_stacks(t_s *s_a, t_s *s_b, int size);
 
 #endif

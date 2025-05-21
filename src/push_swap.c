@@ -66,69 +66,57 @@ int main(int argc, char *argv[])
 	s_a = stack_loader(arr_a, argc - 1);
 	s_b = NULL;
 	free(arr_a);
-	print_stack(s_a);
+	print_stacks(s_a,s_b, argc -1);
 
 	printf("Is it sorted? %i\n", is_sorted(s_a));
 
 	push(&s_a, &s_b, "a");
 	printf("After pa\n");
-	print_stack(s_a);
-	print_stack(s_b);
+	print_stacks(s_a,s_b, argc -1);
 	
 	push(&s_a, &s_b, "a");
 	printf("After pa\n");
-	print_stack(s_a);
-	print_stack(s_b);
+	print_stacks(s_a,s_b, argc -1);
 
 	push(&s_a, &s_b, "a");
 	printf("After pa\n");
-	print_stack(s_a);
-	print_stack(s_b);
+	print_stacks(s_a,s_b, argc -1);
 
 	push(&s_a, &s_b, "a");
 	printf("After pa\n");
-	print_stack(s_a);
-	print_stack(s_b);
+	print_stacks(s_a,s_b, argc -1);
 
 	push(&s_a, &s_b, "a");
 	printf("After pa\n");
-	print_stack(s_a);
-	print_stack(s_b);
+	print_stacks(s_a,s_b, argc -1);
 
 	push(&s_b, &s_a, "b");
 	printf("After pb\n");
-	print_stack(s_a);
-	print_stack(s_b);
+	print_stacks(s_a,s_b, argc -1);
 
 	swap(&s_b, "b");
 	printf("After sb\n");
-	print_stack(s_a);
-	print_stack(s_b);
+	print_stacks(s_a,s_b, argc -1);
 
 	swap(&s_a, "a");
 	printf("After sa\n");
-	print_stack(s_a);
-	print_stack(s_b);
+	print_stacks(s_a,s_b, argc -1);
 
 	rotate(&s_a, "a");
 	printf("After ra\n");
-	print_stack(s_a);
-	print_stack(s_b);
+	print_stacks(s_a,s_b, argc -1);
 
 	rotate(&s_a, "a");
 	printf("After ra\n");
-	print_stack(s_a);
-	print_stack(s_b);
+	print_stacks(s_a,s_b, argc -1);
 
 	rev_rotate(&s_a, "a");
 	printf("After rra\n");
-	print_stack(s_a);
-	print_stack(s_b);
+	print_stacks(s_a,s_b, argc -1);
 
 	rev_rotate(&s_a, "a");
 	printf("After rra\n");
-	print_stack(s_a);
-	print_stack(s_b);
+	print_stacks(s_a,s_b, argc -1);
 
 	return 0;
 }
