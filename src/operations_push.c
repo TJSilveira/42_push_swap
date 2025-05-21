@@ -1,7 +1,6 @@
 #include "../includes/libft.h"
 #include "../includes/push_swap.h"
 
-/* TODO: Check the bug when using Push from an empty list*/
 /* This function handles both push a and push b */
 char	*push(t_s **origin_s, t_s **dest_s, char *name)
 {

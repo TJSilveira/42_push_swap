@@ -6,7 +6,7 @@ char	*rotate(t_s **s, char *name)
 {
 	t_s *second_node;
 
-	if ((*s)->next == (*s) || (*s) == NULL)
+	if ((*s) == NULL || (*s)->next == (*s))
 		return (ft_strjoin("r",name));
 	second_node = (*s)->next;
 	second_node->start = 1;
@@ -19,7 +19,7 @@ char	*rev_rotate(t_s **s, char *name)
 {
 	t_s *last_node;
 
-	if ((*s)->next == (*s) || (*s) == NULL)
+	if ((*s) == NULL || (*s)->next == (*s))
 		return (ft_strjoin("s",name));
 	last_node = (*s)->next;
 	while (last_node->next->start == 0)

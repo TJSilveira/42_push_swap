@@ -8,7 +8,7 @@ char	*swap(t_s **s, char *name)
 	t_s *first_node;
 	t_s *second_node;
 
-	if ((*s)->next == (*s) || (*s) == NULL)
+	if ((*s) == NULL || (*s)->next == (*s))
 		return (ft_strjoin("s",name));
 	last_node = (*s)->next;
 	while (last_node->next->start == 0)
