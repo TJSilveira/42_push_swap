@@ -34,13 +34,15 @@ void	calculate_moves(t_stacks *l, t_s *a_c, int moves_a, int moves_b)
 {
 	/* maybe it is worth it to use negative numbers to represent rev rotation*/
 	if (moves_a > l->len_a / 2)
-		moves_a = l->len_a - moves_a;
+		moves_a = moves_a - l->len_a;
 	if (moves_b > l->len_b / 2)
-		moves_b = l->len_b - moves_b;
+		moves_b = moves_b - l->len_b;
 	printf("Number: %i; Moves A: %i; Moves B: %i;\n", a_c->num, moves_a, moves_b);
-	if ((moves_a + moves_b) < l->cheapest_moves)
+	if ((ABS(moves_a) + ABS(moves_b)) < l->cheapest_moves)
 	{
-		l->cheapest_moves = (moves_a + moves_b);
+		l->cheapest_moves = (ABS(moves_a) + ABS(moves_b));
 		l->cheapest_node = a_c;
+		l->a_moves = moves_a;
+		l->b_moves = moves_b;
 	}
 }

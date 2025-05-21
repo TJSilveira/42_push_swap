@@ -17,6 +17,8 @@ t_stacks	*list_loader(t_s *s_a, t_s *s_b)
 void	cheapest_moves_reset(t_stacks *list)
 {
 	list->cheapest_moves = 9000;
+	list->a_moves = 9000;
+	list->b_moves = 9000;
 }
 
 void	update_maxmin(t_stacks *list)

@@ -21,6 +21,8 @@ typedef struct s_stacks
 	int	len_b;
 	t_s	*cheapest_node;
 	int	cheapest_moves;
+	int	a_moves;
+	int	b_moves;
 }	t_stacks;
 
 /* sorting_algos.c */
