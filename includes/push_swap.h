@@ -23,8 +23,8 @@ int		is_sorted(t_s *s);
 
 /* operations_push.c */
 char	*push(t_s **origin_s, t_s **dest_s, char *name);
-void	push_origin(t_s **origin_s, t_s **temp_o);
-void	push_dest(t_s **origin_s, t_s **dest_s, t_s **temp_o, t_s **temp_d);
+void	push_origin(t_s **origin_s, t_s **to_push);
+void	push_dest(t_s **to_push, t_s **dest_s);
 
 /* operations_swap.c */
 char	*swap(t_s **s, char *name);

@@ -8,7 +8,7 @@ void	print_stacks(t_s *s_a, t_s *s_b, int size)
 
 	counter_a = 0;
 	counter_b = 0;
-	ft_putstr_fd("Current Stacks\nA\tB:\n", 1);
+	ft_putstr_fd("Current Stacks\nA:\tB:\n", 1);
 	while ((counter_a + counter_b) < size)
 	{
 		if (s_a == NULL || (s_a->start && counter_a != 0))

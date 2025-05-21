@@ -44,9 +44,7 @@ int main(int argc, char *argv[])
 	int	*arr_a;
 	t_s	*s_a;
 	t_s	*s_b;
-	int	i;
 
-	i = 0;
 	arr_a = data_loader(argc, argv);
 	if (!arr_a)
 	{
@@ -54,12 +52,6 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 
-	i = 0;
-	while (i < argc - 1)
-	{
-		printf("%i\n",arr_a[i]);
-		i++;
-	}
 	
 	printf("After the indexator\n");
 	indexator(arr_a, argc - 1);
@@ -67,7 +59,7 @@ int main(int argc, char *argv[])
 	s_b = NULL;
 	free(arr_a);
 	print_stacks(s_a,s_b, argc -1);
-
+	/* tests for input creation, operations and display */
 	printf("Is it sorted? %i\n", is_sorted(s_a));
 
 	push(&s_a, &s_b, "a");
@@ -117,6 +109,5 @@ int main(int argc, char *argv[])
 	rev_rotate(&s_a, "a");
 	printf("After rra\n");
 	print_stacks(s_a,s_b, argc -1);
-
 	return 0;
 }
