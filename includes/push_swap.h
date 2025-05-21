@@ -15,9 +15,12 @@ typedef struct s_stacks
 {
 	t_s	*a;
 	t_s	*b;
+	t_s	*min_b;
+	t_s	*max_b;
 	int	len_a;
 	int	len_b;
-	int	cheapest_index;
+	t_s	*cheapest_node;
+	int	cheapest_moves;
 }	t_stacks;
 
 /* sorting_algos.c */
@@ -35,6 +38,8 @@ int		stack_length(t_s *s_a);
 
 /* utils2.c */
 t_stacks	*list_loader(t_s *s_a, t_s *s_b);
+void	cheapest_moves_reset(t_stacks *list);
+void	update_maxmin(t_stacks *list);
 
 /* operations_push.c */
 char	*push(t_s **origin_s, t_s **dest_s, char *name);
@@ -50,5 +55,8 @@ char	*rev_rotate(t_s **s, char *name);
 
 /* print_stacks.c*/
 void	print_stacks(t_s *s_a, t_s *s_b, int size);
+
+/* engine.c */
+void	find_cheapest(t_stacks *l);
 
 #endif

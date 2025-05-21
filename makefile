@@ -29,7 +29,8 @@ SRC_FILES = push_swap.c \
 			operations_push.c \
 			operations_swap.c \
 			operations_rotate.c \
-			print_stacks.c
+			print_stacks.c \
+			engine.c
 
 SRC_FILES_BONUS = 
 
