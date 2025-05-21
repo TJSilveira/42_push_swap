@@ -32,7 +32,6 @@ void	find_cheapest(t_stacks *l)
 
 void	calculate_moves(t_stacks *l, t_s *a_c, int moves_a, int moves_b)
 {
-	/* maybe it is worth it to use negative numbers to represent rev rotation*/
 	if (moves_a > l->len_a / 2)
 		moves_a = moves_a - l->len_a;
 	if (moves_b > l->len_b / 2)
@@ -45,4 +44,32 @@ void	calculate_moves(t_stacks *l, t_s *a_c, int moves_a, int moves_b)
 		l->a_moves = moves_a;
 		l->b_moves = moves_b;
 	}
+}
+
+void	executor(t_stacks *l)
+{
+	while (l->a_moves || l->b_moves)
+	{
+		if (0 < l->a_moves)
+		{
+			printf("%s\n", rotate(&l->a,"a"));
+			(l->a_moves)--;
+		}
+		else if (0 > l->a_moves)
+		{
+			printf("%s\n", rev_rotate(&l->a,"a"));
+			(l->a_moves)++;
+		}
+		if (0 < l->b_moves)
+		{
+			printf("%s\n", rotate(&l->b,"b"));
+			l->b_moves--;
+		}
+		else if (0 > l->b_moves)
+		{
+			printf("%s\n", rev_rotate(&l->b,"b"));
+			(l->b_moves)++;
+		}
+	}
+	printf("%s\n", push(&(l->a), &(l->b), "a"));
 }

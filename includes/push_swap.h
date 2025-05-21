@@ -62,5 +62,6 @@ void	print_stacks(t_s *s_a, t_s *s_b, int size);
 /* engine.c */
 void	find_cheapest(t_stacks *l);
 void	calculate_moves(t_stacks *l, t_s *a_c, int moves_a, int moves_b);
+void	executor(t_stacks *l);
 
 #endif
