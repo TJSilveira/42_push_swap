@@ -84,9 +84,18 @@ int main(int argc, char *argv[])
 	list->len_a = stack_length(list->a);
 	list->len_b = stack_length(list->b);
 	update_maxmin(list);
-	printf("Min: %i; Max: %i\n", list->min_b->num, list->max_b->num);
 	find_cheapest(list);
-	printf("This is the cheapest: %i and this are how many moves it takes: %i\n", list->cheapest_node->num, list->cheapest_moves);
+	printf("The cheapest is %i with %i moves\n", list->cheapest_node->num, list->cheapest_moves);
 
+	push(&(list->a), &(list->b), "a");
+	printf("After pa\n");
+	print_stacks(list->a, list->b, argc -1);
+
+	list->len_a = stack_length(list->a);
+	list->len_b = stack_length(list->b);
+	update_maxmin(list);
+	find_cheapest(list);
+	printf("The cheapest is %i with %i moves\n", list->cheapest_node->num, list->cheapest_moves);
+	
 	return 0;
 }

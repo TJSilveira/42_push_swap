@@ -38,3 +38,13 @@ void	update_maxmin(t_stacks *list)
 		b_cur = b_cur->next;
 	}
 }
+
+t_s	*find_last_node(t_s *first)
+{
+    t_s *last;
+
+	last = first;
+    while (last->next != first)
+        last = last->next;
+    return last;
+}
