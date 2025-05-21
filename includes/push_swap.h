@@ -6,6 +6,8 @@ typedef struct s_s
 {
 	int	num;
 	int	start;
+	int	min;
+	int	max;
 	struct s_s	*next;
 }	t_s;
 
@@ -20,6 +22,7 @@ void	indexator(int *array, int size);
 t_s		*stack_loader(int *array, int size);
 t_s		*create_node(int num, int start);
 int		is_sorted(t_s *s);
+int		stack_length(t_s *s_a);
 
 /* operations_push.c */
 char	*push(t_s **origin_s, t_s **dest_s, char *name);

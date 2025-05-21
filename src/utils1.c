@@ -82,3 +82,20 @@ int	is_sorted(t_s *s)
 	}
 	return (1);
 }
+
+int	stack_length(t_s *s_a)
+{
+	int	counter;
+	t_s *current;
+
+	counter = 0;
+	current = s_a;
+	if (!current)
+		return (counter);
+	while (current != s_a || counter ==0)
+	{
+		counter++;
+		current = current->next;
+	}
+	return (counter);
+}
