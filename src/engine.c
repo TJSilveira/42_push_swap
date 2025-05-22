@@ -79,12 +79,32 @@ void	calculate_moves(t_stacks *l, t_s *o_c, int moves_a, int moves_b)
 	if (moves_b > l->len_b / 2)
 		moves_b = moves_b - l->len_b;
 	// printf("Number: %i; Moves A: %i; Moves B: %i;\n", o_c->num, moves_a, moves_b);
-	if ((ABS(moves_a) + ABS(moves_b)) < (ABS(l->a_moves) + ABS(l->b_moves)))
+	if (min_move_finder(moves_a, moves_b) < min_move_finder(l->a_moves, l->b_moves))
 	{
 		l->cheapest_node = o_c;
 		l->a_moves = moves_a;
 		l->b_moves = moves_b;
 	}
+}
+
+int	min_move_finder(int moves_a, int moves_b)
+{
+	if (moves_a > 0 && moves_b > 0)
+	{
+		if (moves_a > moves_b)
+			return (ABS(moves_a));
+		else
+			return (ABS(moves_b));
+	}
+	else if (moves_a < 0 && moves_b < 0)
+	{
+		if (moves_a < moves_b)
+			return (ABS(moves_a));
+		else
+			return (ABS(moves_b));
+	}
+	else
+		return ((ABS(moves_a) + ABS(moves_b)));	
 }
 
 void	executor(t_stacks *l, char *option)

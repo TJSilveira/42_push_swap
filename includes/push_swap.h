@@ -69,5 +69,6 @@ void	find_cheapest_loop_a_to_b(t_stacks *l, char *option, t_s **o_c);
 void	find_cheapest_loop_b_to_a(t_stacks *l, char *option, t_s **o_c);
 void	sort_3_elem(t_stacks *l);
 void	final_order_corrector(t_stacks *l);
+int		min_move_finder(int moves_a, int moves_b);
 
 #endif
