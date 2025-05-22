@@ -54,7 +54,7 @@ void	find_cheapest_loop_b_to_a(t_stacks *l, char *option, t_s **o_c)
 		find_cheapest_aux(l, option, &d_c, 1);
 		moves_d = 0;
 		d_prev = find_last_node(d_c);
-		while (!((*o_c)->num <= d_prev->num && (*o_c)->num >= d_c->num) && !((*o_c)->num >= d_c->num && d_c == l->max_a) && !((*o_c)->num <= d_prev->num && d_prev == l->min_a))
+		while (!((*o_c)->num >= d_prev->num && (*o_c)->num <= d_c->num) && !((*o_c)->num <= d_c->num && d_c == l->min_a) && !((*o_c)->num >= d_prev->num && d_prev == l->max_a))
 		{
 			d_c = d_c->next;
 			d_prev = d_prev->next;
@@ -89,21 +89,38 @@ void	calculate_moves(t_stacks *l, t_s *o_c, int moves_a, int moves_b)
 
 void	executor(t_stacks *l, char *option)
 {
+	while ((l->a_moves > 0 && l->b_moves > 0) || (l->a_moves < 0 && l->b_moves < 0))
+	{
+		if (0 < l->a_moves && 0 < l->b_moves)
+		{
+			printf("%s\n", rotate(&l->a,"r"));
+			rotate(&l->b,"r");
+			(l->a_moves)--;
+			(l->b_moves)--;
+		}
+		else if (0 > l->a_moves && 0 > l->b_moves)
+		{
+			printf("%s\n", rev_rotate(&l->a,"r"));
+			rev_rotate(&l->b,"r");
+			(l->a_moves)++;
+			(l->b_moves)++;
+		}
+	}
 	while (l->a_moves || l->b_moves)
 	{
 		if (0 < l->a_moves && (l->a_moves)--)
-			printf("%s\n", rotate(&l->a,"a\n"));
+			printf("%s\n", rotate(&l->a,"a"));
 		else if (0 > l->a_moves && (l->a_moves)++)
-			printf("%s\n", rev_rotate(&l->a,"a\n"));
+			printf("%s\n", rev_rotate(&l->a,"a"));
 		if (0 < l->b_moves && (l->b_moves)--)
-			printf("%s\n", rotate(&l->b,"b\n"));
+			printf("%s\n", rotate(&l->b,"b"));
 		else if (0 > l->b_moves && (l->b_moves)++)
-			printf("%s\n", rev_rotate(&l->b,"b\n"));
+			printf("%s\n", rev_rotate(&l->b,"b"));
 	}
 	if (ft_strcmp("a_to_b", option) == 0)
-		printf("%s\n", push(&(l->a), &(l->b), "a\n"));
+		printf("%s\n", push(&(l->a), &(l->b), "b"));
 	else if (ft_strcmp("b_to_a", option) == 0)
-		printf("%s\n", push(&(l->b), &(l->a), "b\n"));
+		printf("%s\n", push(&(l->b), &(l->a), "a"));
 }
 
 void	find_cheapest_aux(t_stacks *l, char *option, t_s **stack, int inside_loop)
@@ -138,4 +155,28 @@ void	sort_3_elem(t_stacks *l)
 		else if (l->a != l->max_a && l->a->next == l->max_a)
 			printf("%s", rev_rotate(&l->a, "a\n"));
 	}	 
+}
+
+void	final_order_corrector(t_stacks *l)
+{
+	t_s	*find;
+
+	find = l->a;
+	l->a_moves = 0;
+	l->b_moves = 0;
+	l->len_a = stack_length(l->a);
+	update_maxmin(l);
+	while (find != l->min_a)
+	{
+		l->a_moves++;
+		find = find->next;
+	}
+	if (l->a_moves > l->len_a / 2)
+		l->a_moves = l->a_moves - l->len_a;
+	while (1)
+	{
+		if (is_sorted(l->a))
+			return ;
+		executor(l, "Nothing");
+	}
 }

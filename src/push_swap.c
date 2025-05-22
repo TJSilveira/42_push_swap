@@ -46,6 +46,8 @@ int main(int argc, char *argv[])
 	t_s	*s_b;
 	t_stacks *list;
 
+	/* Missing filter for ammount of elements in the array */
+
 	arr_a = data_loader(argc, argv);
 	if (!arr_a)
 	{
@@ -54,22 +56,45 @@ int main(int argc, char *argv[])
 	}
 
 	/* TODO: Bundle up all the setup under the list loader function*/
-	printf("After the indexator\n");
 	indexator(arr_a, argc - 1);
 	s_a = stack_loader(arr_a, argc - 1);
 	s_b = NULL;
 	list = list_loader(s_a, s_b);
 	free(arr_a);
-	list->len_a = stack_length(list->a);
-	update_maxmin(list);
 
-	print_stacks(list->a, list->b, argc -1);
-	if (list->len_a == 3)
+	push(&(list->a), &(list->b), "b");
+	push(&(list->a), &(list->b), "b");
+
+
+	while (1)
 	{
-		sort_3_elem(list);
+		if (is_sorted(list->a) && list->b == NULL)
+			return 0;
+		list->len_a = stack_length(list->a);
+		list->len_b = stack_length(list->b);
+		update_maxmin(list);
+		if (list->len_a == 3)
+		{
+			sort_3_elem(list);
+			break;
+		}
+		find_cheapest(list, "a_to_b");
+		executor(list, "a_to_b");
 	}
-	print_stacks(list->a, list->b, argc -1);
 	
+	while (1)
+	{
+		if ((is_sorted(list->a) && list->b == NULL) || list->b == NULL)
+			break;
+		list->len_a = stack_length(list->a);
+		list->len_b = stack_length(list->b);
+		update_maxmin(list);
+		find_cheapest(list, "b_to_a");
+		executor(list, "b_to_a");
+	}
+
+	final_order_corrector(list);
+
 	/* tests for input creation, operations and display */
 	/*printf("Is it sorted? %i\n", is_sorted(s_a));
 

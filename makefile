@@ -69,7 +69,7 @@ clean:
 	@$ rm -rf $(OBJS_DIR)
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -rf $(NAME) output* ./tests/output*
 
 re: fclean $(NAME)
 

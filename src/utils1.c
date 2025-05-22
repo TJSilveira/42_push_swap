@@ -91,9 +91,9 @@ int	stack_length(t_s *s_a)
 	t_s *current;
 
 	counter = 0;
-	current = s_a;
-	if (!current)
+	if (!s_a)
 		return (counter);
+	current = s_a;
 	while (current != s_a || counter ==0)
 	{
 		counter++;
