@@ -1,3 +1,57 @@
+# Test A with 3 numbers
+./push_swap $(shuf -i 1-2147483647 -n 3 | tr '\n' ' ') > ./tests/output_3shA.txt
+echo ""
+echo "Results from test A with 3"
+cat ./tests/output_3shA.txt | wc -l
+
+# Test B with 3 numbers
+./push_swap $(shuf -i 1-2147483647 -n 3 | tr '\n' ' ') > ./tests/output_3shB.txt
+echo ""
+echo "Results from test B with 3"
+cat ./tests/output_3shB.txt | wc -l
+
+# Test C with 3 numbers
+./push_swap $(shuf -i 1-2147483647 -n 3 | tr '\n' ' ') > ./tests/output_3shC.txt
+echo ""
+echo "Results from test C with 3"
+cat ./tests/output_3shC.txt | wc -l
+
+# Test A with 4 numbers
+./push_swap $(shuf -i 1-2147483647 -n 4 | tr '\n' ' ') > ./tests/output_4shA.txt
+echo ""
+echo "Results from test A with 4"
+cat ./tests/output_4shA.txt | wc -l
+
+# Test B with 4 numbers
+./push_swap $(shuf -i 1-2147483647 -n 4 | tr '\n' ' ') > ./tests/output_4shB.txt
+echo ""
+echo "Results from test B with 4"
+cat ./tests/output_4shB.txt | wc -l
+
+# Test C with 4 numbers
+./push_swap $(shuf -i 1-2147483647 -n 4 | tr '\n' ' ') > ./tests/output_4shC.txt
+echo ""
+echo "Results from test C with 4"
+cat ./tests/output_4shC.txt | wc -l
+
+# Test A with 5 numbers
+./push_swap $(shuf -i 1-2147483647 -n 5 | tr '\n' ' ') > ./tests/output_5shA.txt
+echo ""
+echo "Results from test A with 5"
+cat ./tests/output_5shA.txt | wc -l
+
+# Test B with 5 numbers
+./push_swap $(shuf -i 1-2147483647 -n 5 | tr '\n' ' ') > ./tests/output_5shB.txt
+echo ""
+echo "Results from test B with 5"
+cat ./tests/output_5shB.txt | wc -l
+
+# Test C with 5 numbers
+./push_swap $(shuf -i 1-2147483647 -n 5 | tr '\n' ' ') > ./tests/output_5shC.txt
+echo ""
+echo "Results from test C with 5"
+cat ./tests/output_5shC.txt | wc -l
+
 # Test 1 with 100 numbers
 ./push_swap 92 39 90 31 42 34 43 46 4 73 57 20 93 10 94 50 45 58 56 75 35 68 98 27 41 59 13 81 12 44 82 21 60 53 54 18 30 74 26 2 71 63 32 19 85 62 16 29 40 47 80 66 91 22 70 69 97 25 83 65 7 64 52 49 88 51 38 67 24 100 48 99 95 9 76 84 72 23 11 33 87 78 55 15 96 89 77 6 3 17 5 36 28 8 86 79 1 61 14 37 > ./tests/output_100sh1.txt
 echo "Results from test 1 with 100"
@@ -13,7 +67,7 @@ cat ./tests/output_100sh2.txt | wc -l
 ./push_swap 87 41 5 13 48 67 88 57 76 69 95 36 62 18 65 46 37 98 24 21 27 35 29 51 93 82 75 54 23 16 49 58 1 31 80 25 90 14 56 26 100 6 4 99 97 91 52 78 28 79 19 72 42 38 9 30 22 81 89 70 10 12 64 73 40 66 44 3 15 61 74 2 34 7 45 32 33 85 92 53 86 84 47 43 94 55 39 96 8 63 17 83 59 60 20 71 50 11 68 77 > ./tests/output_100sh3.txt
 echo ""
 echo "Results from test 3 with 100"
-cat ./tests/output_100sh2.txt | wc -l
+cat ./tests/output_100sh3.txt | wc -l
 
 # Test 4 with 500 numbers
 ./push_swap 102 287 354 491 41 318 320 322 350 378 6 19 10 359 200 424 87 181 331 280 255 385 453 71 431 120 346 68 430 109 234 50 257 461 299 319 59 139 152 77 83 132 404 303 268 76 305 272 379 43 323 158 119 238 420 486 466 485 493 392 134 382 106 110 413 291 79 180 174 221 213 17 371 12 432 330 405 20 381 219 112 327 333 242 377 245 396 489 360 412 300 244 35 386 274 89 8 277 215 176 65 103 99 175 411 336 128 261 40 80 151 358 408 455 357 380 282 498 228 398 448 203 108 226 126 365 260 278 465 201 298 494 400 212 49 391 462 51 190 459 153 231 279 460 34 253 18 16 309 116 97 239 36 1 449 481 173 362 168 148 162 343 13 355 307 368 490 428 61 286 93 281 476 285 218 182 500 67 422 457 44 383 46 308 209 85 193 142 263 235 351 433 56 482 423 311 11 340 127 418 135 47 26 421 262 192 295 283 58 37 123 205 345 88 438 484 21 349 402 399 64 69 397 361 31 427 293 189 163 499 329 415 188 143 113 375 310 72 155 373 393 366 2 259 197 210 84 172 250 409 224 78 24 395 96 356 384 452 419 98 137 469 339 483 39 440 467 243 42 140 160 464 332 407 328 90 165 472 237 470 344 454 417 232 434 146 294 388 29 376 198 225 194 372 7 497 62 435 131 363 270 436 488 416 94 258 447 370 4 129 445 75 105 446 187 86 233 144 348 475 352 204 369 297 256 266 156 249 296 325 321 169 335 147 22 477 28 406 288 45 217 100 306 38 33 414 186 154 133 326 304 211 426 342 316 199 458 267 216 314 25 442 95 468 473 389 191 101 254 214 202 3 315 150 394 23 136 117 463 425 55 52 82 337 410 247 223 390 284 478 387 183 15 9 265 471 145 374 240 92 495 441 118 149 48 451 184 5 246 241 179 30 276 125 444 480 429 292 122 220 275 437 248 450 492 57 164 130 229 479 401 324 66 207 301 54 290 313 178 167 474 252 496 227 60 81 251 334 353 487 208 73 121 70 177 74 111 27 312 124 166 32 196 114 222 170 269 347 91 185 271 161 403 456 367 236 159 317 273 341 302 206 364 63 264 439 157 443 104 338 195 138 14 141 53 289 115 107 171 230 > ./tests/output_500sh4.txt

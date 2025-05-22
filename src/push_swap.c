@@ -46,8 +46,6 @@ int main(int argc, char *argv[])
 	t_s	*s_b;
 	t_stacks *list;
 
-	/* Missing filter for ammount of elements in the array */
-
 	arr_a = data_loader(argc, argv);
 	if (!arr_a)
 	{
@@ -62,90 +60,46 @@ int main(int argc, char *argv[])
 	list = list_loader(s_a, s_b);
 	free(arr_a);
 
-	push(&(list->a), &(list->b), "b");
-	push(&(list->a), &(list->b), "b");
-
-
-	while (1)
+	if (is_sorted(list->a) && list->b == NULL)
+		return 0;
+	if (list->len_a == 2)
 	{
-		if (is_sorted(list->a) && list->b == NULL)
-			return 0;
-		list->len_a = stack_length(list->a);
-		list->len_b = stack_length(list->b);
-		update_maxmin(list);
-		if (list->len_a == 3)
+		printf("%s", swap(&list->a, "a\n"));
+		return (0);
+	}
+	else
+	{
+		while ((list->len_a > 3) && (list->len_a >= argc - 3))
 		{
-			sort_3_elem(list);
-			break;
+			printf("%s\n", push(&(list->a), &(list->b), "b"));
+			list->len_a = stack_length(list->a);
 		}
-		find_cheapest(list, "a_to_b");
-		executor(list, "a_to_b");
+		while (1)
+		{
+			if (is_sorted(list->a) && list->b == NULL)
+				return 0;
+			list->len_a = stack_length(list->a);
+			list->len_b = stack_length(list->b);
+			update_maxmin(list);
+			if (list->len_a == 3)
+			{
+				sort_3_elem(list);
+				break;
+			}
+			find_cheapest(list, "a_to_b");
+			executor(list, "a_to_b");
+		}
+		while (1)
+		{
+			if ((is_sorted(list->a) && list->b == NULL) || list->b == NULL)
+				break;
+			list->len_a = stack_length(list->a);
+			list->len_b = stack_length(list->b);
+			update_maxmin(list);
+			find_cheapest(list, "b_to_a");
+			executor(list, "b_to_a");
+		}
+		final_order_corrector(list);
 	}
-	
-	while (1)
-	{
-		if ((is_sorted(list->a) && list->b == NULL) || list->b == NULL)
-			break;
-		list->len_a = stack_length(list->a);
-		list->len_b = stack_length(list->b);
-		update_maxmin(list);
-		find_cheapest(list, "b_to_a");
-		executor(list, "b_to_a");
-	}
-
-	final_order_corrector(list);
-
-	/* tests for input creation, operations and display */
-	/*printf("Is it sorted? %i\n", is_sorted(s_a));
-
-	push(&(list->a), &(list->b), "a");
-	printf("After pa\n");
-	print_stacks(list->a, list->b, argc -1);
-	
-	push(&(list->a), &(list->b), "a");
-	printf("After pa\n");
-	print_stacks(list->a, list->b, argc -1);
-
-	push(&(list->a), &(list->b), "a");
-	printf("After pa\n");
-	print_stacks(list->a, list->b, argc -1);
-
-	push(&(list->a), &(list->b), "a");
-	printf("After pa\n");
-	print_stacks(list->a, list->b, argc -1);
-	
-	list->len_a = stack_length(list->a);
-	list->len_b = stack_length(list->b);
-	update_maxmin(list);
-	find_cheapest(list, "a_to_b");
-	printf("The cheapest is %i with %i moves\n", list->cheapest_node->num, ABS(list->a_moves)+ABS(list->b_moves));
-	executor(list, "a_to_b");
-	print_stacks(list->a, list->b, argc -1);
-
-	list->len_a = stack_length(list->a);
-	list->len_b = stack_length(list->b);
-	update_maxmin(list);
-	find_cheapest(list, "a_to_b");
-	printf("The cheapest is %i with %i moves\n", list->cheapest_node->num, ABS(list->a_moves)+ABS(list->b_moves));
-	executor(list, "a_to_b");
-	print_stacks(list->a, list->b, argc -1);
-
-	list->len_a = stack_length(list->a);
-	list->len_b = stack_length(list->b);
-	update_maxmin(list);
-	find_cheapest(list, "a_to_b");
-	printf("The cheapest is %i with %i moves\n", list->cheapest_node->num, ABS(list->a_moves)+ABS(list->b_moves));
-	executor(list, "a_to_b");
-	print_stacks(list->a, list->b, argc -1);
-
-	printf("This should send from B to A\n");
-	list->len_a = stack_length(list->a);
-	list->len_b = stack_length(list->b);
-	update_maxmin(list);
-	find_cheapest(list, "b_to_a");
-	printf("The cheapest is %i with %i moves\n", list->cheapest_node->num, ABS(list->a_moves)+ABS(list->b_moves));
-	executor(list, "b_to_a");
-	print_stacks(list->a, list->b, argc -1);*/
-
 	return 0;
 }

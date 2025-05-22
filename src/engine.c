@@ -196,7 +196,7 @@ void	final_order_corrector(t_stacks *l)
 	while (1)
 	{
 		if (is_sorted(l->a))
-			return ;
+			break;
 		executor(l, "Nothing");
 	}
 }
