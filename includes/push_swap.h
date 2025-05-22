@@ -20,7 +20,6 @@ typedef struct s_stacks
 	int	len_a;
 	int	len_b;
 	t_s	*cheapest_node;
-	int	cheapest_moves;
 	int	a_moves;
 	int	b_moves;
 }	t_stacks;
@@ -60,8 +59,9 @@ char	*rev_rotate(t_s **s, char *name);
 void	print_stacks(t_s *s_a, t_s *s_b, int size);
 
 /* engine.c */
-void	find_cheapest(t_stacks *l);
+void	find_cheapest(t_stacks *l, char *option);
 void	calculate_moves(t_stacks *l, t_s *a_c, int moves_a, int moves_b);
 void	executor(t_stacks *l);
+void	find_cheapest_aux(t_stacks *l, char *option, t_s **o_c, t_s **d_c, int inside_loop);
 
 #endif

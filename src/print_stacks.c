@@ -12,7 +12,7 @@ void	print_stacks(t_s *s_a, t_s *s_b, int size)
 	while ((counter_a + counter_b) < size)
 	{
 		if (s_a == NULL || (s_a->start && counter_a != 0))
-			ft_putchar_fd('\t', 1);
+			ft_putchar_fd(' ', 1);
 		else
 		{
 			ft_putnbr_fd(s_a->num, 1);
@@ -21,7 +21,7 @@ void	print_stacks(t_s *s_a, t_s *s_b, int size)
 		}
 		ft_putchar_fd('\t', 1);
 		if (s_b == NULL || (s_b->start && counter_b != 0))
-			ft_putchar_fd('\t', 1);
+			ft_putchar_fd(' ', 1);
 		else
 		{
 			ft_putnbr_fd(s_b->num, 1);

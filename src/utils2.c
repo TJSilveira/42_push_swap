@@ -10,13 +10,12 @@ t_stacks	*list_loader(t_s *s_a, t_s *s_b)
 	list->b = s_b;
 	list->len_a = stack_length(list->a);
 	list->len_b = stack_length(list->b);
-	list->cheapest_moves = 9000;
+	cheapest_moves_reset(list);
 	return (list);
 }
 
 void	cheapest_moves_reset(t_stacks *list)
 {
-	list->cheapest_moves = 9000;
 	list->a_moves = 9000;
 	list->b_moves = 9000;
 }
