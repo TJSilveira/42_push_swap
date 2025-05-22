@@ -61,7 +61,6 @@ int main(int argc, char *argv[])
 	list = list_loader(s_a, s_b);
 	free(arr_a);
 
-	
 	print_stacks(list->a, list->b, argc -1);
 	/* tests for input creation, operations and display */
 	printf("Is it sorted? %i\n", is_sorted(s_a));
@@ -87,7 +86,7 @@ int main(int argc, char *argv[])
 	update_maxmin(list);
 	find_cheapest(list, "a_to_b");
 	printf("The cheapest is %i with %i moves\n", list->cheapest_node->num, ABS(list->a_moves)+ABS(list->b_moves));
-	executor(list);
+	executor(list, "a_to_b");
 	print_stacks(list->a, list->b, argc -1);
 
 	list->len_a = stack_length(list->a);
@@ -95,7 +94,7 @@ int main(int argc, char *argv[])
 	update_maxmin(list);
 	find_cheapest(list, "a_to_b");
 	printf("The cheapest is %i with %i moves\n", list->cheapest_node->num, ABS(list->a_moves)+ABS(list->b_moves));
-	executor(list);
+	executor(list, "a_to_b");
 	print_stacks(list->a, list->b, argc -1);
 
 	list->len_a = stack_length(list->a);
@@ -103,7 +102,16 @@ int main(int argc, char *argv[])
 	update_maxmin(list);
 	find_cheapest(list, "a_to_b");
 	printf("The cheapest is %i with %i moves\n", list->cheapest_node->num, ABS(list->a_moves)+ABS(list->b_moves));
-	executor(list);
+	executor(list, "a_to_b");
+	print_stacks(list->a, list->b, argc -1);
+
+	printf("This should send from B to A\n");
+	list->len_a = stack_length(list->a);
+	list->len_b = stack_length(list->b);
+	update_maxmin(list);
+	find_cheapest(list, "b_to_a");
+	printf("The cheapest is %i with %i moves\n", list->cheapest_node->num, ABS(list->a_moves)+ABS(list->b_moves));
+	executor(list, "b_to_a");
 	print_stacks(list->a, list->b, argc -1);
 
 	return 0;

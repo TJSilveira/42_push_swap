@@ -22,9 +22,10 @@ void	cheapest_moves_reset(t_stacks *list)
 
 void	update_maxmin(t_stacks *list)
 {
+	t_s *a_cur;
 	t_s *b_cur;
 
-	if (!list || !list->a || !list->b)
+	if (!list)
 		return ;
 	b_cur = list->b;
 	list->min_b = b_cur;
@@ -37,6 +38,18 @@ void	update_maxmin(t_stacks *list)
 		if (b_cur->num > list->max_b->num)
 			list->max_b = b_cur;
 		b_cur = b_cur->next;
+	}
+	a_cur = list->a;
+	list->min_a = a_cur;
+	list->max_a = a_cur;
+	a_cur = a_cur->next;
+	while (a_cur != list->a)
+	{
+		if (a_cur->num < list->min_a->num)
+			list->min_a = a_cur;
+		if (a_cur->num > list->max_a->num)
+			list->max_a = a_cur;
+		a_cur = a_cur->next;
 	}
 }
 

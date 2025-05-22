@@ -63,7 +63,7 @@ void	print_stacks(t_s *s_a, t_s *s_b, int size);
 /* engine.c */
 void	find_cheapest(t_stacks *l, char *option);
 void	calculate_moves(t_stacks *l, t_s *a_c, int moves_a, int moves_b);
-void	executor(t_stacks *l);
+void	executor(t_stacks *l, char *option);
 void	find_cheapest_aux(t_stacks *l, char *option, t_s **stack, int inside_loop);
 void	find_cheapest_loop_a_to_b(t_stacks *l, char *option, t_s **o_c);
 void	find_cheapest_loop_b_to_a(t_stacks *l, char *option, t_s **o_c);

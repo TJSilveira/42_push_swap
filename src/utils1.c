@@ -71,10 +71,12 @@ t_s	*create_node(int num, int start)
 
 int	is_sorted(t_s *s)
 {
+	t_s	*start;
+
 	if (s->next == s || s == NULL)
 		return (1);
-	s = s->next;
-	while (s->next->start == 0)
+	start = s;
+	while (s->next != start)
 	{
 		if (s->num > s->next->num)
 			return (0);
