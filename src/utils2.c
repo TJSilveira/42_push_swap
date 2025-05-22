@@ -27,29 +27,35 @@ void	update_maxmin(t_stacks *list)
 
 	if (!list)
 		return ;
-	b_cur = list->b;
-	list->min_b = b_cur;
-	list->max_b = b_cur;
-	b_cur = b_cur->next;
-	while (b_cur != list->b)
+	if (list->b)
 	{
-		if (b_cur->num < list->min_b->num)
-			list->min_b = b_cur;
-		if (b_cur->num > list->max_b->num)
-			list->max_b = b_cur;
+			b_cur = list->b;
+		list->min_b = b_cur;
+		list->max_b = b_cur;
 		b_cur = b_cur->next;
+		while (b_cur != list->b)
+		{
+			if (b_cur->num < list->min_b->num)
+				list->min_b = b_cur;
+			if (b_cur->num > list->max_b->num)
+				list->max_b = b_cur;
+			b_cur = b_cur->next;
+		}
 	}
-	a_cur = list->a;
-	list->min_a = a_cur;
-	list->max_a = a_cur;
-	a_cur = a_cur->next;
-	while (a_cur != list->a)
+	if (list->a)
 	{
-		if (a_cur->num < list->min_a->num)
-			list->min_a = a_cur;
-		if (a_cur->num > list->max_a->num)
-			list->max_a = a_cur;
+		a_cur = list->a;
+		list->min_a = a_cur;
+		list->max_a = a_cur;
 		a_cur = a_cur->next;
+		while (a_cur != list->a)
+		{
+			if (a_cur->num < list->min_a->num)
+				list->min_a = a_cur;
+			if (a_cur->num > list->max_a->num)
+				list->max_a = a_cur;
+			a_cur = a_cur->next;
+		}	
 	}
 }
 

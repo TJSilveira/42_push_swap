@@ -60,10 +60,18 @@ int main(int argc, char *argv[])
 	s_b = NULL;
 	list = list_loader(s_a, s_b);
 	free(arr_a);
+	list->len_a = stack_length(list->a);
+	update_maxmin(list);
 
 	print_stacks(list->a, list->b, argc -1);
+	if (list->len_a == 3)
+	{
+		sort_3_elem(list);
+	}
+	print_stacks(list->a, list->b, argc -1);
+	
 	/* tests for input creation, operations and display */
-	printf("Is it sorted? %i\n", is_sorted(s_a));
+	/*printf("Is it sorted? %i\n", is_sorted(s_a));
 
 	push(&(list->a), &(list->b), "a");
 	printf("After pa\n");
@@ -112,7 +120,7 @@ int main(int argc, char *argv[])
 	find_cheapest(list, "b_to_a");
 	printf("The cheapest is %i with %i moves\n", list->cheapest_node->num, ABS(list->a_moves)+ABS(list->b_moves));
 	executor(list, "b_to_a");
-	print_stacks(list->a, list->b, argc -1);
+	print_stacks(list->a, list->b, argc -1);*/
 
 	return 0;
 }

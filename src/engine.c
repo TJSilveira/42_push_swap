@@ -92,18 +92,18 @@ void	executor(t_stacks *l, char *option)
 	while (l->a_moves || l->b_moves)
 	{
 		if (0 < l->a_moves && (l->a_moves)--)
-			printf("%s\n", rotate(&l->a,"a"));
+			printf("%s\n", rotate(&l->a,"a\n"));
 		else if (0 > l->a_moves && (l->a_moves)++)
-			printf("%s\n", rev_rotate(&l->a,"a"));
+			printf("%s\n", rev_rotate(&l->a,"a\n"));
 		if (0 < l->b_moves && (l->b_moves)--)
-			printf("%s\n", rotate(&l->b,"b"));
+			printf("%s\n", rotate(&l->b,"b\n"));
 		else if (0 > l->b_moves && (l->b_moves)++)
-			printf("%s\n", rev_rotate(&l->b,"b"));
+			printf("%s\n", rev_rotate(&l->b,"b\n"));
 	}
 	if (ft_strcmp("a_to_b", option) == 0)
-		printf("%s\n", push(&(l->a), &(l->b), "a"));
+		printf("%s\n", push(&(l->a), &(l->b), "a\n"));
 	else if (ft_strcmp("b_to_a", option) == 0)
-		printf("%s\n", push(&(l->b), &(l->a), "b"));
+		printf("%s\n", push(&(l->b), &(l->a), "b\n"));
 }
 
 void	find_cheapest_aux(t_stacks *l, char *option, t_s **stack, int inside_loop)
@@ -122,8 +122,20 @@ void	find_cheapest_aux(t_stacks *l, char *option, t_s **stack, int inside_loop)
 		exit(EXIT_FAILURE);
 	}
 }
-/*
-void	sort_3_elem (t_stacks *l)
-{
 
-}*/
+void	sort_3_elem(t_stacks *l)
+{
+	while (1)
+	{
+		if (is_sorted(l->a))
+			return ;
+		else if (l->a == l->min_a || (l->a == l->max_a && l->a->next != l->min_a))
+			printf("%s", swap(&l->a, "a\n"));
+		else if (l->a == l->max_a && l->a->next == l->min_a)
+			printf("%s", rotate(&l->a, "a\n"));
+		else if (l->a != l->max_a && l->a->next == l->min_a)
+			printf("%s", rotate(&l->a, "a\n"));
+		else if (l->a != l->max_a && l->a->next == l->max_a)
+			printf("%s", rev_rotate(&l->a, "a\n"));
+	}	 
+}
