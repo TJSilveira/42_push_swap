@@ -10,12 +10,16 @@ t_stacks	*list_loader(t_s *s_a, t_s *s_b)
 	list->b = s_b;
 	list->len_a = stack_length(list->a);
 	list->len_b = stack_length(list->b);
-	cheapest_moves_reset(list);
+	cheapest_moves_reset(list, "a_to_b");
 	return (list);
 }
 
-void	cheapest_moves_reset(t_stacks *list)
+void	cheapest_moves_reset(t_stacks *list, char *option)
 {
+	if (ft_strcmp("a_to_b", option) == 0)
+		list->cheapest_node = list->a;
+	else
+		list->cheapest_node = list->b;
 	list->a_moves = 9000;
 	list->b_moves = -9000;
 }

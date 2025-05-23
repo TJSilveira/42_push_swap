@@ -41,7 +41,7 @@ int		stack_length(t_s *s_a);
 
 /* utils2.c */
 t_stacks	*list_loader(t_s *s_a, t_s *s_b);
-void	cheapest_moves_reset(t_stacks *list);
+void	cheapest_moves_reset(t_stacks *list, char *option);
 void	update_maxmin(t_stacks *list);
 t_s		*find_last_node(t_s *first);
 
@@ -61,11 +61,11 @@ char	*rev_rotate(t_s **s, char *name);
 void	print_stacks(t_s *s_a, t_s *s_b, int size);
 
 /* engine.c */
-void	find_cheapest(t_stacks *l, char *option);
-void	calculate_moves(t_stacks *l, t_s *a_c, int moves_a, int moves_b);
+void	find_cheapest(t_stacks *l, char *option, int size);
+void	calculate_moves(t_stacks *l, t_s *o_c, int moves_a, int moves_b, int s);
 void	executor(t_stacks *l, char *option);
 void	find_cheapest_aux(t_stacks *l, char *option, t_s **stack, int inside_loop);
-void	find_cheapest_loop_a_to_b(t_stacks *l, char *option, t_s **o_c);
+void	find_cheapest_loop_a_to_b(t_stacks *l, char *option, t_s **o_c, int size);
 void	find_cheapest_loop_b_to_a(t_stacks *l, char *option, t_s **o_c);
 void	sort_3_elem(t_stacks *l);
 void	final_order_corrector(t_stacks *l);

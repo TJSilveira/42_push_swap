@@ -86,7 +86,7 @@ int main(int argc, char *argv[])
 				sort_3_elem(list);
 				break;
 			}
-			find_cheapest(list, "a_to_b");
+			find_cheapest(list, "a_to_b", argc - 1);
 			executor(list, "a_to_b");
 		}
 		while (1)
@@ -96,7 +96,7 @@ int main(int argc, char *argv[])
 			list->len_a = stack_length(list->a);
 			list->len_b = stack_length(list->b);
 			update_maxmin(list);
-			find_cheapest(list, "b_to_a");
+			find_cheapest(list, "b_to_a", argc - 1);
 			executor(list, "b_to_a");
 		}
 		final_order_corrector(list);
