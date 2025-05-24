@@ -30,13 +30,14 @@ typedef struct s_stacks
 void	order_stack_b(t_stacks *list, int size);
 void	order_stack_a(t_stacks *list, int size);
 
-/* sorting_algos.c 
+/* sorting_algos.c */
 void	radix_sort(int **array, int size);
 int		ft_10power(int exp);
 int		find_max(int *array, int size);
-void	prefix_sum_sort(int **array, int size, int *output, int exp_max);*/
+void	prefix_sum_sort(int **array, int size, int *output, int exp_max);
 
 /* utils1.c */
+void	indexator(int *array, int size);
 t_s		*stack_loader(int *array, int size);
 t_s		*create_node(int num, int start);
 int		is_sorted(t_s *s);
@@ -46,7 +47,6 @@ int		stack_length(t_s *s_a);
 t_stacks	*list_loader(t_s *s_a, t_s *s_b);
 void	cheapest_moves_reset(t_stacks *list, char *option);
 void	update_maxmin(t_stacks *list);
-void	update_maxmin_aux(t_stacks *list);
 t_s		*find_last_node(t_s *first);
 
 /* operations_push.c */
@@ -66,11 +66,11 @@ void	print_stacks(t_s *s_a, t_s *s_b, int size);
 
 /* engine.c */
 void	find_cheapest(t_stacks *l, char *option, int size);
-void	calculate_moves(t_stacks *l, t_s *o_c, int moves[2], int s);
+void	calculate_moves(t_stacks *l, t_s *o_c, int moves_a, int moves_b, int s);
 void	executor(t_stacks *l, char *option);
 void	find_cheapest_aux(t_stacks *l, char *option, t_s **stack, int inside_loop);
-void	find_ch_loop_a_to_b(t_stacks *l, char *option, t_s **o_c, int size);
-void	find_ch_loop_b_to_a(t_stacks *l, char *option, t_s **o_c);
+void	find_cheapest_loop_a_to_b(t_stacks *l, char *option, t_s **o_c, int size);
+void	find_cheapest_loop_b_to_a(t_stacks *l, char *option, t_s **o_c);
 void	sort_3_elem(t_stacks *l);
 void	final_order_corrector(t_stacks *l);
 int		min_move_finder(int moves_a, int moves_b);

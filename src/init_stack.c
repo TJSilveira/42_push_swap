@@ -13,10 +13,11 @@ t_stacks	*init_stack(int argc, char *argv[])
 		ft_putstr_fd("Error importing the array\n", 2);
 		exit(1);
 	}
+	indexator(arr_a, argc - 1);
 	s_a = stack_loader(arr_a, argc - 1);
 	s_b = NULL;
 	free(arr_a);
-	return (list_loader(s_a, s_b));
+	return(list_loader(s_a, s_b));
 }
 
 int	is_int(char *num)
@@ -42,7 +43,7 @@ int	is_int(char *num)
 
 int	*data_loader(int argc, char *argv[])
 {
-	int	*temp;
+	int *temp;
 
 	temp = malloc(sizeof(int) * (argc - 1));
 	while (--argc > 0)
