@@ -26,6 +26,10 @@ typedef struct s_stacks
 	int	b_moves;
 }	t_stacks;
 
+/* push_swap.c*/
+void	order_stack_b(t_stacks *list, int size);
+void	order_stack_a(t_stacks *list, int size);
+
 /* sorting_algos.c */
 void	radix_sort(int **array, int size);
 int		ft_10power(int exp);
@@ -70,5 +74,10 @@ void	find_cheapest_loop_b_to_a(t_stacks *l, char *option, t_s **o_c);
 void	sort_3_elem(t_stacks *l);
 void	final_order_corrector(t_stacks *l);
 int		min_move_finder(int moves_a, int moves_b);
+
+/* init_stack.c */
+t_stacks	*init_stack(int argc, char *argv[]);
+int	is_int(char *num);
+int	*data_loader(int argc, char *argv[]);
 
 #endif

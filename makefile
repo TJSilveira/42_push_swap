@@ -20,6 +20,7 @@ SRC_DIR			= ./src/
 SRC_DIR_BONUS	= ./src_bonus/
 OBJS_DIR		= ./objs/
 LIBFT_DIR		= ./libft/
+BIN_DIR			= ./bin/
 
 # Source Files
 SRC_FILES = push_swap.c \
@@ -30,7 +31,8 @@ SRC_FILES = push_swap.c \
 			operations_swap.c \
 			operations_rotate.c \
 			print_stacks.c \
-			engine.c
+			engine.c \
+			init_stack.c
 
 SRC_FILES_BONUS = 
 
@@ -40,13 +42,16 @@ OBJS_FILES_BONUS	= $(SRC_FILES_BONUS:.c=.o)
 OBJS				= $(addprefix $(OBJS_DIR), $(OBJS_FILES))
 OBJS_BONUS			= $(addprefix $(OBJS_DIR), $(OBJS_FILES_BONUS))
 
+# Binary File
+BIN					= $(addprefix $(BIN_DIR), $(NAME))
+
 all: ${NAME}
 
 # creating executables
-${NAME}: ${OBJS_DIR} ${OBJS}
+${NAME}: ${OBJS_DIR} ${BIN_DIR} ${OBJS}
 	@echo ""
 	@echo "$(YELLOW) Preparing push_swap... $(RESET)"
-	@${CC} ${CFLAGS} ${OBJS} -L${LIBFT_DIR} -lft -o ${NAME}
+	@${CC} ${CFLAGS} ${OBJS} -L${LIBFT_DIR} -lft -o ${BIN}
 	@echo "$(LIGHT_GREEN) push_swap successfully compiled.$(RESET)"
 
 bonus: ${OBJS_DIR} ${OBJS_BONUS}
@@ -63,13 +68,17 @@ $(OBJS_DIR)%.o: $(SRC_DIR_BONUS)%.c
 $(OBJS_DIR):
 	mkdir -p $(OBJS_DIR)
 
+# Creating Objects dir
+$(BIN_DIR):
+	mkdir -p $(BIN_DIR)
+
 clean:
 	@echo ""
 	@echo "$(RED)Did someone call - $(ITALIC)pause$(RESET)$(RED) - the Clean-up crew?!$(RESET)"
 	@$ rm -rf $(OBJS_DIR)
 
 fclean: clean
-	rm -rf $(NAME) output* ./tests
+	rm -rf $(BIN_DIR) output* ./tests/
 
 re: fclean $(NAME)
 

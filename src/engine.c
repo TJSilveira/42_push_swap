@@ -173,19 +173,12 @@ void	find_cheapest_aux(t_stacks *l, char *option, t_s **stack, int inside_loop)
 
 void	sort_3_elem(t_stacks *l)
 {
-	while (1)
-	{
-		if (is_sorted(l->a))
-			return ;
-		else if (l->a == l->min_a || (l->a == l->max_a && l->a->next != l->min_a))
-			printf("%s", swap(&l->a, "a\n"));
-		else if (l->a == l->max_a && l->a->next == l->min_a)
-			printf("%s", rotate(&l->a, "a\n"));
-		else if (l->a != l->max_a && l->a->next == l->min_a)
-			printf("%s", rotate(&l->a, "a\n"));
-		else if (l->a != l->max_a && l->a->next == l->max_a)
-			printf("%s", rev_rotate(&l->a, "a\n"));
-	}	 
+	if (l->a == l->max_a)
+		printf("%s", rotate(&l->a, "a\n"));
+	else if (l->a->next == l->max_a)
+		printf("%s", rev_rotate(&l->a, "a\n"));
+	if (l->a != l->min_a)
+		printf("%s", swap(&l->a, "a\n"));	 
 }
 
 void	final_order_corrector(t_stacks *l)
