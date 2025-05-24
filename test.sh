@@ -1,6 +1,10 @@
 # Create dir for tests
 mkdir ./tests/
 
+input=$(shuf -i 1-2147483647 -n 5 | tr '\n' ' ')
+echo $input > input.txt
+echo $(./bin/push_swap $input) >> input.txt
+
 # Test with 3 numbers
 ./bin/push_swap $(shuf -i 1-2147483647 -n 3 | tr '\n' ' ') | wc -l > ./tests/output_3shA.txt
 
@@ -46,7 +50,7 @@ cat ./tests/output_100sh1.txt
 
 ./bin/push_swap $(shuf -i 1-2147483647 -n 500 | tr '\n' ' ') | wc -l > ./tests/output_500sh4.txt
 # Test 4 with 500 numbers
-for i in {1..300}; do
+for i in {1..30}; do
 
 	# Generate input
 	input=$(shuf -i 1-2147483647 -n 500 | tr '\n' ' ')

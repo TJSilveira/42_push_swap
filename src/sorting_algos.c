@@ -21,7 +21,7 @@ int	ft_10power(int exp)
 int	find_max(int *array, int size)
 {
 	int	i;
-	int max;
+	int	max;
 	int	digits;
 
 	i = 0;
@@ -33,7 +33,7 @@ int	find_max(int *array, int size)
 			max = i;
 	}
 	digits = 0;
-	while (ABS(array[max])/ft_10power(digits) > 9 )
+	while (ABS(array[max]) / ft_10power(digits) > 9)
 		digits++;
 	return (digits);
 }
@@ -45,7 +45,6 @@ void	prefix_sum_sort(int **array, int size, int *output, int exp_max)
 	int	exp_cur;
 
 	exp_cur = 0;
-
 	while (exp_cur <= exp_max)
 	{
 		i = -1;
@@ -86,11 +85,5 @@ void	radix_sort(int **array, int size)
 	if (!output)
 		exit (1);
 	exp_max = find_max(*array, size);
-	prefix_sum_sort(array, size, output, exp_max);	
-
-	// i = -1;
-	// printf("Start of the counter\n");
-	// while (++i < 19)
-	// 	printf("%i\n", counter[i]);
-	// printf("End of the counter\n");
+	prefix_sum_sort(array, size, output, exp_max);
 }

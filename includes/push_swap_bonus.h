@@ -37,7 +37,6 @@ int		find_max(int *array, int size);
 void	prefix_sum_sort(int **array, int size, int *output, int exp_max);
 
 /* utils1.c */
-void	indexator(int *array, int size);
 t_s		*stack_loader(int *array, int size);
 t_s		*create_node(int num, int start);
 int		is_sorted(t_s *s);

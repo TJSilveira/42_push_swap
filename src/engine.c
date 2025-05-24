@@ -3,76 +3,79 @@
 
 void	find_cheapest(t_stacks *l, char *option, int size)
 {
-	t_s *o_c;
+	t_s	*o_c;
 
 	cheapest_moves_reset(l, option);
 	find_cheapest_aux(l, option, &o_c, 0);
 	if (ft_strcmp(option, "a_to_b") == 0)
-		find_cheapest_loop_a_to_b(l, option, &o_c, size);
+		find_ch_loop_a_to_b(l, option, &o_c, size);
 	else if (ft_strcmp(option, "b_to_a") == 0)
-		find_cheapest_loop_b_to_a(l, option, &o_c);
+		find_ch_loop_b_to_a(l, option, &o_c);
 }
 
-void	find_cheapest_loop_a_to_b(t_stacks *l, char *option, t_s **o_c, int size)
+void	find_ch_loop_a_to_b(t_stacks *l, char *option, t_s **o_c, int size)
 {
-	t_s *d_c;
-	t_s *d_prev;
-	int	moves_o;
-	int	moves_d;
+	t_s	*d_c;
+	t_s	*d_prev;
+	int	moves[2];
 
-	moves_o = 0;
-	while ((*o_c) != l->a || moves_o == 0)
+	moves[0] = 0;
+	while ((*o_c) != l->a || moves[0] == 0)
 	{
 		find_cheapest_aux(l, option, &d_c, 1);
-		moves_d = 0;
+		moves[1] = 0;
 		d_prev = find_last_node(d_c);
-		while (!((*o_c)->num <= d_prev->num && (*o_c)->num >= d_c->num) && !((*o_c)->num >= d_c->num && d_c == l->max_b) && !((*o_c)->num <= d_prev->num && d_prev == l->min_b))
+		while (!((*o_c)->num <= d_prev->num && (*o_c)->num >= d_c->num) && \
+			!((*o_c)->num >= d_c->num && d_c == l->max_b) && \
+			!((*o_c)->num <= d_prev->num && d_prev == l->min_b))
 		{
 			d_c = d_c->next;
 			d_prev = d_prev->next;
-			moves_d++;
+			moves[1]++;
 		}
 		if (ft_strcmp("a_to_b", option) == 0)
-			calculate_moves(l, (*o_c), moves_o, moves_d, size);
+			calculate_moves(l, (*o_c), moves, size);
 		else
-			calculate_moves(l, (*o_c), moves_d, moves_o, size);
+			calculate_moves(l, (*o_c), moves, size);
 		(*o_c) = (*o_c)->next;
-		moves_o++;
+		moves[0]++;
 	}
 }
 
-void	find_cheapest_loop_b_to_a(t_stacks *l, char *option, t_s **o_c)
+void	find_ch_loop_b_to_a(t_stacks *l, char *option, t_s **o_c)
 {
 	t_s *d_c;
 	t_s *d_prev;
-	int	moves_o;
-	int	moves_d;
+	int	moves[2];
 
-	moves_o = 0;
-	while ((*o_c) != l->b || moves_o == 0)
+	moves[0] = 0;
+	while ((*o_c) != l->b || moves[0] == 0)
 	{
 		find_cheapest_aux(l, option, &d_c, 1);
-		moves_d = 0;
+		moves[1] = 0;
 		d_prev = find_last_node(d_c);
-		while (!((*o_c)->num >= d_prev->num && (*o_c)->num <= d_c->num) && !((*o_c)->num <= d_c->num && d_c == l->min_a) && !((*o_c)->num >= d_prev->num && d_prev == l->max_a))
+		while (!((*o_c)->num >= d_prev->num && (*o_c)->num <= d_c->num) && 
+			!((*o_c)->num <= d_c->num && d_c == l->min_a) && \
+			!((*o_c)->num >= d_prev->num && d_prev == l->max_a))
 		{
 			d_c = d_c->next;
 			d_prev = d_prev->next;
-			moves_d++;
+			moves[1]++;
 		}
 		if (ft_strcmp("a_to_b", option) == 0)
-			calculate_moves(l, (*o_c), moves_o, moves_d, 0);
+			calculate_moves(l, (*o_c), moves, 0);
 		else
-			calculate_moves(l, (*o_c), moves_d, moves_o, 0);
+			calculate_moves(l, (*o_c), moves, 0);
 		(*o_c) = (*o_c)->next;
-		moves_o++;
+		moves[0]++;
 	}
 }
 
-/* The function can be further optimized by choosing moves according to the way
-   the rotation must be made. If both A and B Stack must move in the same direction,
-   you can save a move by using the rr and rrr versions of the commands.*/
-void	calculate_moves(t_stacks *l, t_s *o_c, int moves_a, int moves_b, int s)
+/* The function can be further optimized by choosing moves according to 
+	the way the rotation must be made. If both A and B Stack must move in
+	the same direction, you can save a move by using the rr and rrr
+	versions of the commands.*/
+void	calculate_moves(t_stacks *l, t_s *o_c, int moves[2], int s)
 {
 	int	p1;
 	int	p2;
@@ -85,16 +88,17 @@ void	calculate_moves(t_stacks *l, t_s *o_c, int moves_a, int moves_b, int s)
 		p2 = 0;
 	else
 		p2 = 0;
-	if (moves_a > l->len_a / 2)
-		moves_a = moves_a - l->len_a;
-	if (moves_b > l->len_b / 2)
-		moves_b = moves_b - l->len_b;
-	// printf("Number: %i; Moves A: %i; Moves B: %i;\n", o_c->num, moves_a, moves_b);
-	if (min_move_finder(moves_a, moves_b) + p1 < min_move_finder(l->a_moves, l->b_moves) + p2)
+	if (moves[0] > l->len_a / 2)
+		moves[0] = moves[0] - l->len_a;
+	if (moves[1] > l->len_b / 2)
+		moves[1] = moves[1] - l->len_b;
+	printf("Number: %i; Moves A: %i; Moves B: %i;\n", o_c->num, moves[0], moves[1]);
+	if (min_move_finder(moves[0], moves[1]) + p1 \
+	< min_move_finder(l->a_moves, l->b_moves) + p2)
 	{
 		l->cheapest_node = o_c;
-		l->a_moves = moves_a;
-		l->b_moves = moves_b;
+		l->a_moves = moves[0];
+		l->b_moves = moves[1];
 	}
 }
 

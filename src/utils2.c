@@ -3,8 +3,8 @@
 
 t_stacks	*list_loader(t_s *s_a, t_s *s_b)
 {
-	t_stacks *list;
-	
+	t_stacks	*list;
+
 	list = malloc(sizeof(t_stacks));
 	list->a = s_a;
 	list->b = s_b;
@@ -26,14 +26,13 @@ void	cheapest_moves_reset(t_stacks *list, char *option)
 
 void	update_maxmin(t_stacks *list)
 {
-	t_s *a_cur;
-	t_s *b_cur;
+	t_s	*b_cur;
 
 	if (!list)
 		return ;
 	if (list->b)
 	{
-			b_cur = list->b;
+		b_cur = list->b;
 		list->min_b = b_cur;
 		list->max_b = b_cur;
 		b_cur = b_cur->next;
@@ -46,6 +45,13 @@ void	update_maxmin(t_stacks *list)
 			b_cur = b_cur->next;
 		}
 	}
+	update_maxmin_aux(list);
+}
+
+void	update_maxmin_aux(t_stacks *list)
+{
+	t_s	*a_cur;
+
 	if (list->a)
 	{
 		a_cur = list->a;
@@ -59,16 +65,16 @@ void	update_maxmin(t_stacks *list)
 			if (a_cur->num > list->max_a->num)
 				list->max_a = a_cur;
 			a_cur = a_cur->next;
-		}	
+		}
 	}
 }
 
 t_s	*find_last_node(t_s *first)
 {
-    t_s *last;
+	t_s	*last;
 
 	last = first;
-    while (last->next != first)
-        last = last->next;
-    return last;
+	while (last->next != first)
+		last = last->next;
+	return (last);
 }
