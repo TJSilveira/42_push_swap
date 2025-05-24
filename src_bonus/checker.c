@@ -1,0 +1,86 @@
+#include "../includes/libft.h"
+#include "../includes/push_swap.h"
+
+int	main(int argc, char *argv[])
+{
+	t_stacks *list;
+	
+	if (argc == 1)
+		exit (EXIT_SUCCESS);
+	list = init_stack(argc, argv);
+	execute_rules(list);
+	if (is_sorted(list->a) && list->b == NULL)
+		printf("OK");
+	else
+		printf("KO");
+	release_stacks(list);
+	return (0);
+}
+
+void	execute_rules(t_stacks *l)
+{
+	char *rule;
+
+	rule = get_next_line(0);
+	while (rule)
+	{
+		operation_redirect(l, rule);
+		rule = get_next_line(0);
+	}
+}
+
+void	operation_redirect(t_stacks *l,char *rule)
+{
+	if (ft_strcmp("ra",rule))
+		printf("%s", rotate(&l->a, "a"));
+	else if (ft_strcmp("rb",rule))
+		printf("%s", rotate(&l->b, "b"));
+	else if (ft_strcmp("rb",rule))
+	{
+		printf("%s", rotate(&l->a, "r"));
+		rotate(&l->b, "r");
+	}
+	else if (ft_strcmp("sa",rule))
+		printf("%s", swap(&l->a, "a"));
+	else if (ft_strcmp("sb",rule))
+		printf("%s", swap(&l->b, "b"));
+	else if (ft_strcmp("rra",rule))
+		printf("%s", rev_rotate(&l->a, "a"));
+	else if (ft_strcmp("rrb",rule))
+		printf("%s", rev_rotate(&l->b, "b"));
+	else if (ft_strcmp("rrr",rule))
+	{
+		printf("%s", rev_rotate(&l->a, "r"));
+		rev_rotate(&l->b, "r");
+	}
+	else
+		error_handler(l, rule);
+	free(rule);
+}
+
+void	error_handler(t_stacks *l, char *rule)
+{
+	printf("Rule is invalid: %s", rule);
+	release_stacks(l);
+	free(rule);
+	exit(EXIT_FAILURE);
+}
+
+void	release_stacks(t_stacks *l)
+{
+	t_s	*temp;
+
+	while (l->a)
+	{
+		temp = l->a;
+		l->a = l->a->next;
+		free(temp);
+	}
+	while (l->b)
+	{
+		temp = l->b;
+		l->b = l->b->next;
+		free(temp);
+	}
+	free(l);
+}

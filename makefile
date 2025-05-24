@@ -34,7 +34,11 @@ SRC_FILES = push_swap.c \
 			engine.c \
 			init_stack.c
 
-SRC_FILES_BONUS = 
+SRC_FILES_BONUS = checker.c \
+					init_stack.c \
+					operations_push.c \
+					operations_swap.c \
+					operations_rotate.c \
 
 # Object Files
 OBJS_FILES			= $(SRC_FILES:.c=.o)
