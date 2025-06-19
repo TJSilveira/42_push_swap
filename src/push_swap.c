@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 	else
 	{
 		order_stack_b(list, argc - 1);
-		order_stack_a(list, argc - 1);
+		order_stack_a(list);
 		final_order_corrector(list);
 	}
 	return 0;
@@ -41,12 +41,12 @@ void	order_stack_b(t_stacks *list, int size)
 			sort_3_elem(list);
 			break;
 		}
-		find_cheapest(list, "a_to_b", size);
+		find_cheapest(list, "a_to_b");
 		executor(list, "a_to_b");
 	}
 }
 
-void	order_stack_a(t_stacks *list, int size)
+void	order_stack_a(t_stacks *list)
 {
 	while (1)
 	{
@@ -55,7 +55,7 @@ void	order_stack_a(t_stacks *list, int size)
 		list->len_a = stack_length(list->a);
 		list->len_b = stack_length(list->b);
 		update_maxmin(list);
-		find_cheapest(list, "b_to_a", size);
+		find_cheapest(list, "b_to_a");
 		executor(list, "b_to_a");
 	}
 }

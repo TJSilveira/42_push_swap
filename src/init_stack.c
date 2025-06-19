@@ -50,8 +50,8 @@ int	*data_loader(int argc, char *argv[])
 	{
 		if (!is_int(argv[argc]))
 		{
-			return (NULL);
 			free(temp);
+			return (NULL);
 		}
 		temp[argc - 1] = ft_atoi(argv[argc]);
 	}

@@ -59,7 +59,7 @@ ${NAME}: ${OBJS_DIR} ${BIN_DIR} ${OBJS}
 	@echo "$(LIGHT_GREEN) push_swap successfully compiled.$(RESET)"
 
 bonus: ${OBJS_DIR} ${OBJS_BONUS}
-	${CC} ${CFLAGS} ${OBJS_BONUS} -L${LIBFT_DIR} -lft -o ${NAME}
+	${CC} ${CFLAGS} ${OBJS_BONUS} -L${LIBFT_DIR} -lft -o checker
 
 # Create Object files
 $(OBJS_DIR)%.o: $(SRC_DIR)%.c

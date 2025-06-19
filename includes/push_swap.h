@@ -28,7 +28,7 @@ typedef struct s_stacks
 
 /* push_swap.c*/
 void	order_stack_b(t_stacks *list, int size);
-void	order_stack_a(t_stacks *list, int size);
+void	order_stack_a(t_stacks *list);
 
 /* sorting_algos.c */
 void	radix_sort(int **array, int size);
@@ -65,11 +65,11 @@ char	*rev_rotate(t_s **s, char *name);
 void	print_stacks(t_s *s_a, t_s *s_b, int size);
 
 /* engine.c */
-void	find_cheapest(t_stacks *l, char *option, int size);
-void	calculate_moves(t_stacks *l, t_s *o_c, int moves_a, int moves_b, int s);
+void	find_cheapest(t_stacks *l, char *option);
+void	calculate_moves(t_stacks *l, t_s *o_c, int moves_a, int moves_b);
 void	executor(t_stacks *l, char *option);
 void	find_cheapest_aux(t_stacks *l, char *option, t_s **stack, int inside_loop);
-void	find_cheapest_loop_a_to_b(t_stacks *l, char *option, t_s **o_c, int size);
+void	find_cheapest_loop_a_to_b(t_stacks *l, char *option, t_s **o_c);
 void	find_cheapest_loop_b_to_a(t_stacks *l, char *option, t_s **o_c);
 void	sort_3_elem(t_stacks *l);
 void	final_order_corrector(t_stacks *l);
