@@ -1,5 +1,5 @@
 #include "../includes/libft.h"
-#include "../includes/push_swap.h"
+#include "../includes/push_swap_bonus.h"
 
 int	main(int argc, char *argv[])
 {
@@ -69,18 +69,25 @@ void	error_handler(t_stacks *l, char *rule)
 void	release_stacks(t_stacks *l)
 {
 	t_s	*temp;
+	t_s	*last;
 
+	last = find_last_node(l->a);
+	last->next = NULL;
 	while (l->a)
 	{
 		temp = l->a;
 		l->a = l->a->next;
 		free(temp);
+		temp = NULL;
 	}
+	last = find_last_node(l->a);
+	last->next = NULL;
 	while (l->b)
 	{
 		temp = l->b;
 		l->b = l->b->next;
 		free(temp);
+		temp = NULL;
 	}
 	free(l);
 }
