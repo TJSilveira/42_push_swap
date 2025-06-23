@@ -3,8 +3,8 @@
 
 int	main(int argc, char *argv[])
 {
-	t_stacks *list;
-	
+	t_stacks	*list;
+
 	if (argc == 1)
 		exit (EXIT_SUCCESS);
 	list = init_stack(argc, argv);
@@ -19,7 +19,7 @@ int	main(int argc, char *argv[])
 
 void	execute_rules(t_stacks *l)
 {
-	char *rule;
+	char	*rule;
 
 	rule = get_next_line(0);
 	while (rule)
@@ -29,26 +29,26 @@ void	execute_rules(t_stacks *l)
 	}
 }
 
-void	operation_redirect(t_stacks *l,char *rule)
+void	operation_redirect(t_stacks *l, char *rule)
 {
-	if (ft_strcmp("ra",rule))
+	if (ft_strcmp("ra", rule))
 		printf("%s", rotate(&l->a, "a"));
-	else if (ft_strcmp("rb",rule))
+	else if (ft_strcmp("rb", rule))
 		printf("%s", rotate(&l->b, "b"));
-	else if (ft_strcmp("rb",rule))
+	else if (ft_strcmp("rb", rule))
 	{
 		printf("%s", rotate(&l->a, "r"));
 		rotate(&l->b, "r");
 	}
-	else if (ft_strcmp("sa",rule))
+	else if (ft_strcmp("sa", rule))
 		printf("%s", swap(&l->a, "a"));
-	else if (ft_strcmp("sb",rule))
+	else if (ft_strcmp("sb", rule))
 		printf("%s", swap(&l->b, "b"));
-	else if (ft_strcmp("rra",rule))
+	else if (ft_strcmp("rra", rule))
 		printf("%s", rev_rotate(&l->a, "a"));
-	else if (ft_strcmp("rrb",rule))
+	else if (ft_strcmp("rrb", rule))
 		printf("%s", rev_rotate(&l->b, "b"));
-	else if (ft_strcmp("rrr",rule))
+	else if (ft_strcmp("rrr", rule))
 	{
 		printf("%s", rev_rotate(&l->a, "r"));
 		rev_rotate(&l->b, "r");

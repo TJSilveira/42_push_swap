@@ -3,7 +3,7 @@
 
 void	find_cheapest(t_stacks *l, char *option)
 {
-	t_s *o_c;
+	t_s	*o_c;
 
 	cheapest_moves_reset(l, option);
 	find_cheapest_aux(l, option, &o_c, 0);
@@ -15,8 +15,8 @@ void	find_cheapest(t_stacks *l, char *option)
 
 void	find_cheapest_loop_a_to_b(t_stacks *l, char *option, t_s **o_c)
 {
-	t_s *d_c;
-	t_s *d_prev;
+	t_s	*d_c;
+	t_s	*d_prev;
 	int	moves_o;
 	int	moves_d;
 
@@ -43,8 +43,8 @@ void	find_cheapest_loop_a_to_b(t_stacks *l, char *option, t_s **o_c)
 
 void	find_cheapest_loop_b_to_a(t_stacks *l, char *option, t_s **o_c)
 {
-	t_s *d_c;
-	t_s *d_prev;
+	t_s	*d_c;
+	t_s	*d_prev;
 	int	moves_o;
 	int	moves_d;
 
@@ -78,7 +78,6 @@ void	calculate_moves(t_stacks *l, t_s *o_c, int moves_a, int moves_b)
 		moves_a = moves_a - l->len_a;
 	if (moves_b > l->len_b / 2)
 		moves_b = moves_b - l->len_b;
-	// printf("Number: %i; Moves A: %i; Moves B: %i;\n", o_c->num, moves_a, moves_b);
 	if (min_move_finder(moves_a, moves_b) < min_move_finder(l->a_moves, l->b_moves))
 	{
 		l->cheapest_node = o_c;
@@ -104,7 +103,7 @@ int	min_move_finder(int moves_a, int moves_b)
 			return (ABS(moves_b));
 	}
 	else
-		return ((ABS(moves_a) + ABS(moves_b)));	
+		return ((ABS(moves_a) + ABS(moves_b)));
 }
 
 void	executor(t_stacks *l, char *option)
@@ -113,15 +112,15 @@ void	executor(t_stacks *l, char *option)
 	{
 		if (0 < l->a_moves && 0 < l->b_moves)
 		{
-			printf("%s\n", rotate(&l->a,"r"));
-			rotate(&l->b,"r");
+			printf("%s\n", rotate(&l->a, "r"));
+			rotate(&l->b, "r");
 			(l->a_moves)--;
 			(l->b_moves)--;
 		}
 		else if (0 > l->a_moves && 0 > l->b_moves)
 		{
-			printf("%s\n", rev_rotate(&l->a,"r"));
-			rev_rotate(&l->b,"r");
+			printf("%s\n", rev_rotate(&l->a, "r"));
+			rev_rotate(&l->b, "r");
 			(l->a_moves)++;
 			(l->b_moves)++;
 		}
@@ -129,13 +128,13 @@ void	executor(t_stacks *l, char *option)
 	while (l->a_moves || l->b_moves)
 	{
 		if (0 < l->a_moves && (l->a_moves)--)
-			printf("%s\n", rotate(&l->a,"a"));
+			printf("%s\n", rotate(&l->a, "a"));
 		else if (0 > l->a_moves && (l->a_moves)++)
-			printf("%s\n", rev_rotate(&l->a,"a"));
+			printf("%s\n", rev_rotate(&l->a, "a"));
 		if (0 < l->b_moves && (l->b_moves)--)
-			printf("%s\n", rotate(&l->b,"b"));
+			printf("%s\n", rotate(&l->b, "b"));
 		else if (0 > l->b_moves && (l->b_moves)++)
-			printf("%s\n", rev_rotate(&l->b,"b"));
+			printf("%s\n", rev_rotate(&l->b, "b"));
 	}
 	if (ft_strcmp("a_to_b", option) == 0)
 		printf("%s\n", push(&(l->a), &(l->b), "b"));
@@ -167,7 +166,7 @@ void	sort_3_elem(t_stacks *l)
 	else if (l->a->next == l->max_a)
 		printf("%s", rev_rotate(&l->a, "a\n"));
 	if (l->a != l->min_a)
-		printf("%s", swap(&l->a, "a\n"));	 
+		printf("%s", swap(&l->a, "a\n"));
 }
 
 void	final_order_corrector(t_stacks *l)
@@ -189,7 +188,7 @@ void	final_order_corrector(t_stacks *l)
 	while (1)
 	{
 		if (is_sorted(l->a))
-			break;
+			break ;
 		executor(l, "Nothing");
 	}
 }

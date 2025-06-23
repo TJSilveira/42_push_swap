@@ -35,8 +35,8 @@ void	indexator(int *array, int size)
 t_s	*stack_loader(int *array, int size)
 {
 	int	i;
-	t_s *current_node;
-	t_s *first_node;
+	t_s	*current_node;
+	t_s	*first_node;
 
 	i = 0;
 	if (size == 1)
@@ -46,12 +46,12 @@ t_s	*stack_loader(int *array, int size)
 	current_node = first_node;
 	while (++i < size - 1)
 	{
-		current_node->next = create_node(array[i],0);
+		current_node->next = create_node(array[i], 0);
 		current_node = current_node->next;
 	}
 	if (i == size - 1)
 	{
-		current_node->next = create_node(array[i],0);
+		current_node->next = create_node(array[i], 0);
 		current_node->next->next = first_node;
 	}
 	return (first_node);
@@ -89,13 +89,13 @@ int	is_sorted(t_s *s)
 int	stack_length(t_s *s_a)
 {
 	int	counter;
-	t_s *current;
+	t_s	*current;
 
 	counter = 0;
 	if (!s_a)
 		return (counter);
 	current = s_a;
-	while (current != s_a || counter ==0)
+	while (current != s_a || counter == 0)
 	{
 		counter++;
 		current = current->next;

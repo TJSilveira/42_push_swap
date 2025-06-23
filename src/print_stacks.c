@@ -26,7 +26,7 @@ void	print_stacks(t_s *s_a, t_s *s_b, int size)
 		{
 			ft_putnbr_fd(s_b->num, 1);
 			s_b = s_b->next;
-			counter_b++;		
+			counter_b++;
 		}
 		ft_putchar_fd('\n', 1);
 	}
