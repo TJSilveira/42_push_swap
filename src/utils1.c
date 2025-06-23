@@ -10,6 +10,7 @@ void	indexator(int *array, int size)
 
 	i = size;
 	j = 0;
+	check_repeated(array, size);
 	output = malloc(sizeof(int) * size);
 	if (!output)
 		exit(1);
@@ -19,7 +20,7 @@ void	indexator(int *array, int size)
 		order = 0;
 		while (j >= 0)
 		{
-			if (array[i] > array[j] /*|| ((array[i] == array[j]) && (i > j))*/)
+			if (array[i] > array[j])
 				order++;
 			j--;
 		}

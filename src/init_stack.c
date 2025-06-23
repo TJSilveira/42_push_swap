@@ -10,7 +10,7 @@ t_stacks	*init_stack(int argc, char *argv[])
 	arr_a = data_loader(argc, argv);
 	if (!arr_a)
 	{
-		ft_putstr_fd("Error importing the array\n", 2);
+		ft_putstr_fd("Error\n", 2);
 		exit(1);
 	}
 	indexator(arr_a, argc - 1);
@@ -27,11 +27,16 @@ int	is_int(char *num)
 
 	final_num = 0;
 	s = 0;
-	if (*(num++) == '-')
+	if (*num == 0)
+		return (0);
+	if (*num == '-')
+	{
 		s++;
+		num++;
+	}
 	while (*num)
 	{
-		if (*num < '0' || *num > '9')
+		if (!(*num >= '0' && *num <= '9'))
 			return (0);
 		final_num = final_num * 10 + *num - '0';
 		if ((final_num > 2147483648 && s) || (final_num > INT_MAX && !s))
@@ -56,4 +61,25 @@ int	*data_loader(int argc, char *argv[])
 		temp[argc - 1] = ft_atoi(argv[argc]);
 	}
 	return (temp);
+}
+
+void	check_repeated(int* array, int size)
+{
+	int i;
+	int	j;
+
+	i = -1;
+	while (++i < size - 1)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (array[i] == array[j])
+			{
+				ft_putstr_fd("Error\n", 2);
+				exit(1);
+			}
+			j++;
+		}
+	}
 }

@@ -79,5 +79,6 @@ int		min_move_finder(int moves_a, int moves_b);
 t_stacks	*init_stack(int argc, char *argv[]);
 int	is_int(char *num);
 int	*data_loader(int argc, char *argv[]);
+void	check_repeated(int* array, int size);
 
 #endif
