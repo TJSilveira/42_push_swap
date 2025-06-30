@@ -1,6 +1,8 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include <stdlib.h>
+# define PRINT 1
+# define NOPRINT 1
 
 typedef struct s_s
 {
@@ -29,6 +31,8 @@ typedef struct s_stacks
 /* push_swap.c*/
 void		order_stack_b(t_stacks *list, int size);
 void		order_stack_a(t_stacks *list);
+void		list_clear(t_stacks *list);
+
 
 /* sorting_algos.c */
 void		radix_sort(int **array, int size);

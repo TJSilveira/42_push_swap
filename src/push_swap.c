@@ -7,7 +7,10 @@ int	main(int argc, char *argv[])
 
 	list = init_stack(argc, argv);
 	if (is_sorted(list->a) && list->b == NULL)
+	{
+		list_clear(list);
 		return (0);
+	}
 	if (list->len_a == 2)
 	{
 		printf("%s", swap(&list->a, "a\n"));
@@ -19,6 +22,7 @@ int	main(int argc, char *argv[])
 		order_stack_a(list);
 		final_order_corrector(list);
 	}
+	list_clear(list);
 	return (0);
 }
 
@@ -58,4 +62,34 @@ void	order_stack_a(t_stacks *list)
 		find_cheapest(list, "b_to_a");
 		executor(list, "b_to_a");
 	}
+}
+
+void	list_clear(t_stacks *list)
+{
+	t_s	*temp;
+	t_s *last;
+
+	last = find_last_node(list->a);
+	if (list->a == last)
+		free(list->a);
+	else
+	{	
+		while (list->a != last)
+		{
+			if (list->a->next == NULL)
+			{
+				temp = list->a;
+				printf("List A: Inside the if: %i; This is the next %i\n", temp->num, temp->next->num);
+				free(temp);
+				temp = NULL;
+				break ;
+			}
+			temp = list->a;
+			list->a = list->a->next;
+			printf("List A: Outside the if: %i This is the next %i\n", temp->num, temp->next->num);
+			free(temp);
+			temp = NULL;
+		}
+	}
+	free(list);
 }
