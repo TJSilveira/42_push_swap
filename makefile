@@ -92,6 +92,7 @@ clean:
 fclean: clean
 	rm -rf $(BIN_DIR) output* ./tests/
 	rm -rf ./libft/*.a
+	@$ rm -rf valgrind.txt
 
 re: fclean $(NAME)
 

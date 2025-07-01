@@ -10,11 +10,8 @@ int	main(int argc, char *argv[])
 		list_clear(list);
 		return (0);
 	}
-	if (list->len_a == 2)
-	{
-		swap(&list->a, "a", PRINT);
-		return (0);
-	}
+	else if (list->len_a == 2)
+		rotate(&list->a, "a", PRINT);
 	else
 	{
 		order_stack_b(list, argc - 1);
@@ -78,17 +75,16 @@ void	list_clear(t_stacks *list)
 			if (list->a->next == NULL)
 			{
 				temp = list->a;
-				printf("List A: Inside the if: %i; This is the next %i\n", temp->num, temp->next->num);
 				free(temp);
 				temp = NULL;
 				break ;
 			}
 			temp = list->a;
 			list->a = list->a->next;
-			printf("List A: Outside the if: %i This is the next %i\n", temp->num, temp->next->num);
 			free(temp);
 			temp = NULL;
 		}
+		free(list->a);
 	}
 	free(list);
 }

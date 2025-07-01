@@ -6,6 +6,8 @@ t_stacks	*init_stack(int argc, char *argv[])
 	t_s	*s_a;
 	t_s	*s_b;
 
+	if (argc == 1)
+		exit(0);
 	arr_a = data_loader(argc, argv);
 	if (!arr_a)
 	{
@@ -76,6 +78,7 @@ void	check_repeated(int *array, int size)
 			if (array[i] == array[j])
 			{
 				ft_putstr_fd("Error\n", 2);
+				free(array);
 				exit(1);
 			}
 			j++;
