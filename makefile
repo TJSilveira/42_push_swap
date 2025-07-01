@@ -25,14 +25,16 @@ BIN_DIR			= ./bin/
 
 # Source Files
 SRC_FILES = push_swap.c \
-			sorting_algos.c \
 			utils1.c \
 			utils2.c \
+			utils3.c \
 			operations_push.c \
 			operations_swap.c \
 			operations_rotate.c \
 			print_stacks.c \
-			engine.c \
+			engine_1.c \
+			engine_2.c \
+			engine_3.c \
 			init_stack.c
 
 SRC_FILES_BONUS = checker.c \

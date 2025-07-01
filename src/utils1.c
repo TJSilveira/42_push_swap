@@ -10,9 +10,7 @@ void	indexator(int *array, int size)
 	i = size;
 	j = 0;
 	check_repeated(array, size);
-	output = malloc(sizeof(int) * size);
-	if (!output)
-		exit(1);
+	malloc_init(&output, size);
 	while (--i >= 0)
 	{
 		j = size - 1;

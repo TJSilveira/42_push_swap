@@ -23,9 +23,29 @@ void	cheapest_moves_reset(t_stacks *list, char *option)
 	list->b_moves = -9000;
 }
 
-void	update_maxmin(t_stacks *list)
+void	update_maxmin_b(t_stacks *list)
 {
 	t_s	*a_cur;
+
+	if (list->a)
+	{
+		a_cur = list->a;
+		list->min_a = a_cur;
+		list->max_a = a_cur;
+		a_cur = a_cur->next;
+		while (a_cur != list->a)
+		{
+			if (a_cur->num < list->min_a->num)
+				list->min_a = a_cur;
+			if (a_cur->num > list->max_a->num)
+				list->max_a = a_cur;
+			a_cur = a_cur->next;
+		}
+	}
+}
+
+void	update_maxmin(t_stacks *list)
+{
 	t_s	*b_cur;
 
 	if (!list)
@@ -45,21 +65,7 @@ void	update_maxmin(t_stacks *list)
 			b_cur = b_cur->next;
 		}
 	}
-	if (list->a)
-	{
-		a_cur = list->a;
-		list->min_a = a_cur;
-		list->max_a = a_cur;
-		a_cur = a_cur->next;
-		while (a_cur != list->a)
-		{
-			if (a_cur->num < list->min_a->num)
-				list->min_a = a_cur;
-			if (a_cur->num > list->max_a->num)
-				list->max_a = a_cur;
-			a_cur = a_cur->next;
-		}
-	}
+	update_maxmin_b(list);
 }
 
 t_s	*find_last_node(t_s *first)
@@ -67,67 +73,9 @@ t_s	*find_last_node(t_s *first)
 	t_s	*last;
 
 	if (first == NULL)
-		return (NULL);	
+		return (NULL);
 	last = first;
 	while (last->next != first)
 		last = last->next;
 	return (last);
-}
-
-void	print_move(char *action, char *name, int option)
-{
-	if (option == PRINT)
-		ft_printf("%s%c\n", action, *name);
-}
-
-void	list_clear(t_stacks *list)
-{
-	t_s	*temp;
-	t_s *last;
-
-	last = find_last_node(list->a);
-	if (!list->a);
-	else if (list->a == last)
-		free(list->a);
-	else
-	{	
-		while (list->a != last)
-		{
-			if (list->a->next == NULL)
-			{
-				temp = list->a;
-				free(temp);
-				temp = NULL;
-				break ;
-			}
-			temp = list->a;
-			list->a = list->a->next;
-			free(temp);
-			temp = NULL;
-		}
-		free(list->a);
-	}
-	last = find_last_node(list->b);
-	if (!list->b);
-	else if (list->b == last)
-		free(list->b);
-	else
-	{	
-		while (list->b != last)
-		{
-			if (list->b->next == NULL)
-			{
-				temp = list->b;
-				free(temp);
-				temp = NULL;
-				break ;
-			}
-			temp = list->b;
-			list->a = list->b->next;
-			free(temp);
-			temp = NULL;
-		}
-		free(list->b);
-	}
-	free(list);
 }

@@ -61,4 +61,3 @@ void	order_stack_a(t_stacks *list)
 		executor(list, "b_to_a");
 	}
 }
-

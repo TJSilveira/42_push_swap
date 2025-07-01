@@ -8,18 +8,8 @@ t_stacks	*init_stack(int argc, char *argv[])
 	t_s		*s_a;
 	t_s		*s_b;
 
-
 	if (argc == 2 && argv[1][0])
-	{
-		temp = ft_split(argv[1], ' ');
-		if (!temp)
-			exit(1);
-		count_num = 0;
-		while (temp[count_num])
-			count_num++;
-		arr_a = data_loader(count_num, temp);
-		free_arrays(temp);
-	}
+		init_string(argv, &temp, &count_num, &arr_a);
 	else
 	{
 		count_num = argc - 1;
@@ -35,6 +25,18 @@ t_stacks	*init_stack(int argc, char *argv[])
 	s_b = NULL;
 	free(arr_a);
 	return (list_loader(s_a, s_b));
+}
+
+void	init_string(char *argv[], char ***temp, int *count, int **arr_a)
+{
+	*temp = ft_split(argv[1], ' ');
+	if (!(*temp))
+		exit(1);
+	*count = 0;
+	while ((*temp)[*count])
+		(*count)++;
+	*arr_a = data_loader(*count, *temp);
+	free_arrays(*temp);
 }
 
 int	is_int(char *num)
@@ -80,28 +82,6 @@ int	*data_loader(int count_num, char *argv[])
 		temp[count_num] = ft_atoi(argv[count_num]);
 	}
 	return (temp);
-}
-
-void	check_repeated(int *array, int size)
-{
-	int	i;
-	int	j;
-
-	i = -1;
-	while (++i < size - 1)
-	{
-		j = i + 1;
-		while (j < size)
-		{
-			if (array[i] == array[j])
-			{
-				ft_putstr_fd("Error\n", 2);
-				free(array);
-				exit(1);
-			}
-			j++;
-		}
-	}
 }
 
 void	free_arrays(char **arrays)
