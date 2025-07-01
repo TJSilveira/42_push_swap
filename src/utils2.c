@@ -1,4 +1,3 @@
-#include "../includes/libft.h"
 #include "../includes/push_swap.h"
 
 t_stacks	*list_loader(t_s *s_a, t_s *s_b)
@@ -16,7 +15,7 @@ t_stacks	*list_loader(t_s *s_a, t_s *s_b)
 
 void	cheapest_moves_reset(t_stacks *list, char *option)
 {
-	if (ft_strcmp("a_to_b", option) == 0)
+	if (ft_strncmp("a_to_b", option, 6) == 0)
 		list->cheapest_node = list->a;
 	else
 		list->cheapest_node = list->b;

@@ -1,4 +1,3 @@
-#include "../includes/libft.h"
 #include "../includes/push_swap.h"
 
 void	print_stacks(t_s *s_a, t_s *s_b, int size)

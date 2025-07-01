@@ -1,4 +1,3 @@
-#include "../includes/libft.h"
 #include "../includes/push_swap.h"
 
 /* This function handles both push a and push b */

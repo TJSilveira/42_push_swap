@@ -1,6 +1,7 @@
 #ifndef PUSH_SWAP_BONUS_H
 # define PUSH_SWAP_BONUS_H
 # include <stdlib.h>
+# include "../libft/libft.h"
 # include "push_swap.h"
 
 /* checker.c */

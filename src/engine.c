@@ -1,4 +1,3 @@
-#include "../includes/libft.h"
 #include "../includes/push_swap.h"
 
 void	find_cheapest(t_stacks *l, char *option)
@@ -7,9 +6,9 @@ void	find_cheapest(t_stacks *l, char *option)
 
 	cheapest_moves_reset(l, option);
 	find_cheapest_aux(l, option, &o_c, 0);
-	if (ft_strcmp(option, "a_to_b") == 0)
+	if (ft_strncmp(option, "a_to_b", 6) == 0)
 		find_cheapest_loop_a_to_b(l, option, &o_c);
-	else if (ft_strcmp(option, "b_to_a") == 0)
+	else if (ft_strncmp(option, "b_to_a", 6) == 0)
 		find_cheapest_loop_b_to_a(l, option, &o_c);
 }
 
@@ -32,7 +31,7 @@ void	find_cheapest_loop_a_to_b(t_stacks *l, char *option, t_s **o_c)
 			d_prev = d_prev->next;
 			moves_d++;
 		}
-		if (ft_strcmp("a_to_b", option) == 0)
+		if (ft_strncmp("a_to_b", option, 6) == 0)
 			calculate_moves(l, (*o_c), moves_o, moves_d);
 		else
 			calculate_moves(l, (*o_c), moves_d, moves_o);
@@ -60,7 +59,7 @@ void	find_cheapest_loop_b_to_a(t_stacks *l, char *option, t_s **o_c)
 			d_prev = d_prev->next;
 			moves_d++;
 		}
-		if (ft_strcmp("a_to_b", option) == 0)
+		if (ft_strncmp("a_to_b", option, 6) == 0)
 			calculate_moves(l, (*o_c), moves_o, moves_d);
 		else
 			calculate_moves(l, (*o_c), moves_d, moves_o);
@@ -91,19 +90,19 @@ int	min_move_finder(int moves_a, int moves_b)
 	if (moves_a > 0 && moves_b > 0)
 	{
 		if (moves_a > moves_b)
-			return (ABS(moves_a));
+			return (ft_abs(moves_a));
 		else
-			return (ABS(moves_b));
+			return (ft_abs(moves_b));
 	}
 	else if (moves_a < 0 && moves_b < 0)
 	{
 		if (moves_a < moves_b)
-			return (ABS(moves_a));
+			return (ft_abs(moves_a));
 		else
-			return (ABS(moves_b));
+			return (ft_abs(moves_b));
 	}
 	else
-		return ((ABS(moves_a) + ABS(moves_b)));
+		return ((ft_abs(moves_a) + ft_abs(moves_b)));
 }
 
 void	executor(t_stacks *l, char *option)
@@ -136,21 +135,21 @@ void	executor(t_stacks *l, char *option)
 		else if (0 > l->b_moves && (l->b_moves)++)
 			printf("%s\n", rev_rotate(&l->b, "b"));
 	}
-	if (ft_strcmp("a_to_b", option) == 0)
+	if (ft_strncmp("a_to_b", option, 6) == 0)
 		printf("%s\n", push(&(l->a), &(l->b), "b"));
-	else if (ft_strcmp("b_to_a", option) == 0)
+	else if (ft_strncmp("b_to_a", option, 6) == 0)
 		printf("%s\n", push(&(l->b), &(l->a), "a"));
 }
 
 void	find_cheapest_aux(t_stacks *l, char *option, t_s **stack, int inside_loop)
 {
-	if (ft_strcmp(option, "a_to_b") == 0 && inside_loop == 0)
+	if (ft_strncmp(option, "a_to_b", 6) == 0 && inside_loop == 0)
 		(*stack) = l->a;
-	else if (ft_strcmp(option, "b_to_a") == 0 && inside_loop == 0)
+	else if (ft_strncmp(option, "b_to_a", 6) == 0 && inside_loop == 0)
 		(*stack) = l->b;
-	else if (ft_strcmp(option, "a_to_b") == 0 && inside_loop == 1)
+	else if (ft_strncmp(option, "a_to_b", 6) == 0 && inside_loop == 1)
 		(*stack) = l->b;
-	else if (ft_strcmp(option, "b_to_a") == 0 && inside_loop == 1)
+	else if (ft_strncmp(option, "b_to_a", 6) == 0 && inside_loop == 1)
 		(*stack) = l->a;
 	else
 	{

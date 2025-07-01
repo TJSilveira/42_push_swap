@@ -1,4 +1,3 @@
-#include "../includes/libft.h"
 #include "../includes/push_swap.h"
 
 int	ft_10power(int exp)
@@ -29,11 +28,11 @@ int	find_max(int *array, int size)
 	digits = 0;
 	while (++i < size)
 	{
-		if (ABS(array[i]) > ABS(array[max]))
+		if (ft_abs(array[i]) > ft_abs(array[max]))
 			max = i;
 	}
 	digits = 0;
-	while (ABS(array[max]) / ft_10power(digits) > 9)
+	while (ft_abs(array[max]) / ft_10power(digits) > 9)
 		digits++;
 	return (digits);
 }

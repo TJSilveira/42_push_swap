@@ -1,4 +1,3 @@
-#include "../includes/libft.h"
 #include "../includes/push_swap.h"
 
 t_stacks	*init_stack(int argc, char *argv[])

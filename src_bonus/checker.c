@@ -1,4 +1,3 @@
-#include "../includes/libft.h"
 #include "../includes/push_swap_bonus.h"
 
 int	main(int argc, char *argv[])
@@ -31,24 +30,24 @@ void	execute_rules(t_stacks *l)
 
 void	operation_redirect(t_stacks *l, char *rule)
 {
-	if (ft_strcmp("ra", rule))
+	if (ft_strncmp("ra", rule, 2))
 		printf("%s", rotate(&l->a, "a"));
-	else if (ft_strcmp("rb", rule))
+	else if (ft_strncmp("rb", rule, 2))
 		printf("%s", rotate(&l->b, "b"));
-	else if (ft_strcmp("rb", rule))
+	else if (ft_strncmp("rb", rule, 2))
 	{
 		printf("%s", rotate(&l->a, "r"));
 		rotate(&l->b, "r");
 	}
-	else if (ft_strcmp("sa", rule))
+	else if (ft_strncmp("sa", rule, 2))
 		printf("%s", swap(&l->a, "a"));
-	else if (ft_strcmp("sb", rule))
+	else if (ft_strncmp("sb", rule, 2))
 		printf("%s", swap(&l->b, "b"));
-	else if (ft_strcmp("rra", rule))
+	else if (ft_strncmp("rra", rule, 3))
 		printf("%s", rev_rotate(&l->a, "a"));
-	else if (ft_strcmp("rrb", rule))
+	else if (ft_strncmp("rrb", rule, 3))
 		printf("%s", rev_rotate(&l->b, "b"));
-	else if (ft_strcmp("rrr", rule))
+	else if (ft_strncmp("rrr", rule, 3))
 	{
 		printf("%s", rev_rotate(&l->a, "r"));
 		rev_rotate(&l->b, "r");
