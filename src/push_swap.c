@@ -62,31 +62,3 @@ void	order_stack_a(t_stacks *list)
 	}
 }
 
-void	list_clear(t_stacks *list)
-{
-	t_s	*temp;
-	t_s *last;
-
-	last = find_last_node(list->a);
-	if (list->a == last)
-		free(list->a);
-	else
-	{	
-		while (list->a != last)
-		{
-			if (list->a->next == NULL)
-			{
-				temp = list->a;
-				free(temp);
-				temp = NULL;
-				break ;
-			}
-			temp = list->a;
-			list->a = list->a->next;
-			free(temp);
-			temp = NULL;
-		}
-		free(list->a);
-	}
-	free(list);
-}

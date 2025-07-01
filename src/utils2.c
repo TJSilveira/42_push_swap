@@ -66,6 +66,8 @@ t_s	*find_last_node(t_s *first)
 {
 	t_s	*last;
 
+	if (first == NULL)
+		return (NULL);	
 	last = first;
 	while (last->next != first)
 		last = last->next;
@@ -76,4 +78,56 @@ void	print_move(char *action, char *name, int option)
 {
 	if (option == PRINT)
 		ft_printf("%s%c\n", action, *name);
+}
+
+void	list_clear(t_stacks *list)
+{
+	t_s	*temp;
+	t_s *last;
+
+	last = find_last_node(list->a);
+	if (!list->a);
+	else if (list->a == last)
+		free(list->a);
+	else
+	{	
+		while (list->a != last)
+		{
+			if (list->a->next == NULL)
+			{
+				temp = list->a;
+				free(temp);
+				temp = NULL;
+				break ;
+			}
+			temp = list->a;
+			list->a = list->a->next;
+			free(temp);
+			temp = NULL;
+		}
+		free(list->a);
+	}
+	last = find_last_node(list->b);
+	if (!list->b);
+	else if (list->b == last)
+		free(list->b);
+	else
+	{	
+		while (list->b != last)
+		{
+			if (list->b->next == NULL)
+			{
+				temp = list->b;
+				free(temp);
+				temp = NULL;
+				break ;
+			}
+			temp = list->b;
+			list->a = list->b->next;
+			free(temp);
+			temp = NULL;
+		}
+		free(list->b);
+	}
+	free(list);
 }

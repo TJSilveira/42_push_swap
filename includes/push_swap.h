@@ -32,7 +32,6 @@ typedef struct s_stacks
 /* push_swap.c*/
 void		order_stack_b(t_stacks *list, int size);
 void		order_stack_a(t_stacks *list);
-void		list_clear(t_stacks *list);
 
 
 /* sorting_algos.c */
@@ -54,6 +53,7 @@ void		cheapest_moves_reset(t_stacks *list, char *option);
 void		update_maxmin(t_stacks *list);
 t_s			*find_last_node(t_s *first);
 void		print_move(char *action, char *name, int option);
+void		list_clear(t_stacks *list);
 
 /* operations_push.c */
 void		push(t_s **origin_s, t_s **dest_s, char *name, int option);

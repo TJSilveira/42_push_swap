@@ -7,6 +7,7 @@ RESET		=	\033[0m
 
 
 NAME 		= push_swap
+NAME_BONUS	= checker
 
 CC			= gcc
 
@@ -38,7 +39,10 @@ SRC_FILES_BONUS = checker.c \
 					init_stack.c \
 					operations_push.c \
 					operations_swap.c \
-					operations_rotate.c
+					operations_rotate.c \
+					print_stacks.c \
+					utils2.c \
+					utils1.c
 
 # Object Files
 OBJS_FILES			= $(SRC_FILES:.c=.o)
@@ -51,6 +55,7 @@ LIBFT = $(LIBFT_DIR)libft.a
 
 # Binary File
 BIN					= $(addprefix $(BIN_DIR), $(NAME))
+BIN_BONUS			= $(addprefix $(BIN_DIR), $(NAME_BONUS))
 
 all: ${NAME}
 
@@ -65,8 +70,8 @@ ${NAME}: $(LIBFT) ${OBJS_DIR} ${BIN_DIR} ${OBJS}
 	@${CC} ${CFLAGS} ${OBJS} -L${LIBFT_DIR} -lft -o ${BIN}
 	@echo "$(LIGHT_GREEN) push_swap successfully compiled.$(RESET)"
 
-bonus: $(LIBFT) ${OBJS_DIR} ${OBJS_BONUS}
-	${CC} ${CFLAGS} ${OBJS_BONUS} -L${LIBFT_DIR} -lft -o checker
+bonus: $(LIBFT) ${OBJS_DIR} ${BIN_DIR} ${OBJS_BONUS}
+	${CC} ${CFLAGS} ${OBJS_BONUS} -L${LIBFT_DIR} -lft -o $(BIN_BONUS)
 
 # Create Object files
 $(OBJS_DIR)%.o: $(SRC_DIR)%.c

@@ -7,7 +7,7 @@ SRC_DIR = #./src/
 OBJS_DIR = #./objs/
 BIN_DIR	= #./bin/
 
-SRC_FILES = $(wildcard $(SRC_DIR)*.c)
+SRC_FILES = $(wildcard *.c)
 
 # CC Flags
 CFLAGS = -Wall -Wextra -Werror
