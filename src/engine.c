@@ -111,15 +111,15 @@ void	executor(t_stacks *l, char *option)
 	{
 		if (0 < l->a_moves && 0 < l->b_moves)
 		{
-			printf("%s\n", rotate(&l->a, "r"));
-			rotate(&l->b, "r");
+			rotate(&l->a, "r", PRINT);
+			rotate(&l->b, "r", NOPRINT);
 			(l->a_moves)--;
 			(l->b_moves)--;
 		}
 		else if (0 > l->a_moves && 0 > l->b_moves)
 		{
-			printf("%s\n", rev_rotate(&l->a, "r"));
-			rev_rotate(&l->b, "r");
+			rev_rotate(&l->a, "r", PRINT);
+			rev_rotate(&l->b, "r", NOPRINT);
 			(l->a_moves)++;
 			(l->b_moves)++;
 		}
@@ -127,18 +127,18 @@ void	executor(t_stacks *l, char *option)
 	while (l->a_moves || l->b_moves)
 	{
 		if (0 < l->a_moves && (l->a_moves)--)
-			printf("%s\n", rotate(&l->a, "a"));
+			rotate(&l->a, "a", PRINT);
 		else if (0 > l->a_moves && (l->a_moves)++)
-			printf("%s\n", rev_rotate(&l->a, "a"));
+			rev_rotate(&l->a, "a", PRINT);
 		if (0 < l->b_moves && (l->b_moves)--)
-			printf("%s\n", rotate(&l->b, "b"));
+			rotate(&l->b, "b", PRINT);
 		else if (0 > l->b_moves && (l->b_moves)++)
-			printf("%s\n", rev_rotate(&l->b, "b"));
+			rev_rotate(&l->b, "b", PRINT);
 	}
 	if (ft_strncmp("a_to_b", option, 6) == 0)
-		printf("%s\n", push(&(l->a), &(l->b), "b"));
+		push(&(l->a), &(l->b), "b", PRINT);
 	else if (ft_strncmp("b_to_a", option, 6) == 0)
-		printf("%s\n", push(&(l->b), &(l->a), "a"));
+		push(&(l->b), &(l->a), "a", PRINT);
 }
 
 void	find_cheapest_aux(t_stacks *l, char *option, t_s **stack, int inside_loop)
@@ -161,11 +161,11 @@ void	find_cheapest_aux(t_stacks *l, char *option, t_s **stack, int inside_loop)
 void	sort_3_elem(t_stacks *l)
 {
 	if (l->a == l->max_a)
-		printf("%s", rotate(&l->a, "a\n"));
+		rotate(&l->a, "a", PRINT);
 	else if (l->a->next == l->max_a)
-		printf("%s", rev_rotate(&l->a, "a\n"));
+		rev_rotate(&l->a, "a", PRINT);
 	if (l->a != l->min_a)
-		printf("%s", swap(&l->a, "a\n"));
+		swap(&l->a, "a", PRINT);
 }
 
 void	final_order_corrector(t_stacks *l)

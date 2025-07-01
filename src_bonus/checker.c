@@ -9,9 +9,9 @@ int	main(int argc, char *argv[])
 	list = init_stack(argc, argv);
 	execute_rules(list);
 	if (is_sorted(list->a) && list->b == NULL)
-		printf("OK");
+		ft_printf("OK");
 	else
-		printf("KO");
+		ft_printf("KO");
 	release_stacks(list);
 	return (0);
 }
@@ -31,26 +31,26 @@ void	execute_rules(t_stacks *l)
 void	operation_redirect(t_stacks *l, char *rule)
 {
 	if (ft_strncmp("ra", rule, 2))
-		printf("%s", rotate(&l->a, "a"));
+		rotate(&l->a, "a", PRINT);
 	else if (ft_strncmp("rb", rule, 2))
-		printf("%s", rotate(&l->b, "b"));
+		rotate(&l->b, "b", PRINT);
 	else if (ft_strncmp("rb", rule, 2))
 	{
-		printf("%s", rotate(&l->a, "r"));
-		rotate(&l->b, "r");
+		rotate(&l->a, "r", PRINT);
+		rotate(&l->b, "r", NOPRINT);
 	}
 	else if (ft_strncmp("sa", rule, 2))
-		printf("%s", swap(&l->a, "a"));
+		swap(&l->a, "a", PRINT);
 	else if (ft_strncmp("sb", rule, 2))
-		printf("%s", swap(&l->b, "b"));
+		swap(&l->b, "b", PRINT);
 	else if (ft_strncmp("rra", rule, 3))
-		printf("%s", rev_rotate(&l->a, "a"));
+		rev_rotate(&l->a, "a", PRINT);
 	else if (ft_strncmp("rrb", rule, 3))
-		printf("%s", rev_rotate(&l->b, "b"));
+		rev_rotate(&l->b, "b", PRINT);
 	else if (ft_strncmp("rrr", rule, 3))
 	{
-		printf("%s", rev_rotate(&l->a, "r"));
-		rev_rotate(&l->b, "r");
+		rev_rotate(&l->a, "r", PRINT);
+		rev_rotate(&l->b, "r", NOPRINT);
 	}
 	else
 		error_handler(l, rule);
@@ -59,7 +59,7 @@ void	operation_redirect(t_stacks *l, char *rule)
 
 void	error_handler(t_stacks *l, char *rule)
 {
-	printf("Rule is invalid: %s", rule);
+	ft_printf("Rule is invalid: %s\n", rule);
 	release_stacks(l);
 	free(rule);
 	exit(EXIT_FAILURE);

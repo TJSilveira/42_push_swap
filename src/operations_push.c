@@ -1,16 +1,19 @@
 #include "../includes/push_swap.h"
 
 /* This function handles both push a and push b */
-char	*push(t_s **origin_s, t_s **dest_s, char *name)
+void	push(t_s **origin_s, t_s **dest_s, char *name, int option)
 {
 	t_s	*to_push;
 
 	if (*origin_s == NULL)
-		return (ft_strjoin("p", name));
+	{
+		print_move("p", name, option);
+		return ;
+	}
 	to_push = NULL;
 	push_origin(origin_s, &to_push);
 	push_dest(&to_push, dest_s);
-	return (ft_strjoin("p", name));
+	print_move("p", name, option);
 }
 
 /* This function removes the pushed element from origin stack*/
@@ -57,14 +60,4 @@ void	push_dest(t_s **to_push, t_s **dest_s)
 		(*dest_s) = (*to_push);
 		(*to_push)->start = 1;
 	}
-}
-
-void	push_move(t_s **origin_s, t_s **dest_s, char *name, int	to_print)
-{
-	char	*temp;
-
-	temp = push(origin_s, dest_s, name);
-	if (to_print == PRINT)
-		printf("%s\n", temp);
-	free(temp);
 }

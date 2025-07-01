@@ -3,7 +3,7 @@
 # include <stdlib.h>
 # include "../libft/libft.h"
 # define PRINT 1
-# define NOPRINT 1
+# define NOPRINT 0
 
 typedef struct s_s
 {
@@ -53,18 +53,19 @@ t_stacks	*list_loader(t_s *s_a, t_s *s_b);
 void		cheapest_moves_reset(t_stacks *list, char *option);
 void		update_maxmin(t_stacks *list);
 t_s			*find_last_node(t_s *first);
+void		print_move(char *action, char *name, int option);
 
 /* operations_push.c */
-char		*push(t_s **origin_s, t_s **dest_s, char *name);
+void		push(t_s **origin_s, t_s **dest_s, char *name, int option);
 void		push_origin(t_s **origin_s, t_s **to_push);
 void		push_dest(t_s **to_push, t_s **dest_s);
 
 /* operations_swap.c */
-char		*swap(t_s **s, char *name);
+void		swap(t_s **s, char *name, int option);
 
 /* operations_rotate.c*/
-char		*rotate(t_s **s, char *name);
-char		*rev_rotate(t_s **s, char *name);
+void		rotate(t_s **s, char *name, int option);
+void		rev_rotate(t_s **s, char *name, int option);
 
 /* print_stacks.c*/
 void		print_stacks(t_s *s_a, t_s *s_b, int size);

@@ -12,7 +12,7 @@ int	main(int argc, char *argv[])
 	}
 	if (list->len_a == 2)
 	{
-		printf("%s", swap(&list->a, "a\n"));
+		swap(&list->a, "a", PRINT);
 		return (0);
 	}
 	else
@@ -29,7 +29,7 @@ void	order_stack_b(t_stacks *list, int size)
 {
 	while ((list->len_a > 3) && (list->len_a >= size - 2))
 	{
-		printf("%s\n", push(&(list->a), &(list->b), "b"));
+		push(&(list->a), &(list->b), "b", PRINT);
 		list->len_a = stack_length(list->a);
 	}
 	while (1)

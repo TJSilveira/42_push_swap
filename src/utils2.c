@@ -71,3 +71,9 @@ t_s	*find_last_node(t_s *first)
 		last = last->next;
 	return (last);
 }
+
+void	print_move(char *action, char *name, int option)
+{
+	if (option == PRINT)
+		ft_printf("%s%c\n", action, *name);
+}
