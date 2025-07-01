@@ -86,5 +86,6 @@ t_stacks	*init_stack(int argc, char *argv[]);
 int			is_int(char *num);
 int			*data_loader(int argc, char *argv[]);
 void		check_repeated(int* array, int size);
+void		free_arrays(char **arrays);
 
 #endif

@@ -4,6 +4,8 @@ int	main(int argc, char *argv[])
 {
 	t_stacks	*list;
 
+	if (argc == 1)
+		exit(0);
 	list = init_stack(argc, argv);
 	if (is_sorted(list->a) && list->b == NULL)
 	{
