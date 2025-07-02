@@ -20,12 +20,12 @@ int	main(int argc, char *argv[])
 		exit (EXIT_SUCCESS);
 	list = init_stack(argc, argv);
 	execute_rules(list);
-	print_stacks(list->a, list->b, argc - 1);
-	if (is_sorted(list->a) && list->b == NULL)
+	if (list->b == NULL && is_sorted(list->a))
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
 	list_clear(list);
+	get_next_line(-1);
 	return (0);
 }
 
@@ -43,28 +43,26 @@ void	execute_rules(t_stacks *l)
 
 void	operation_redirect(t_stacks *l, char *rule)
 {
-	if (ft_strncmp("ra", rule, 2))
-		rotate(&l->a, "a", NOPRINT);
-	else if (ft_strncmp("rb", rule, 2))
-		rotate(&l->b, "b", NOPRINT);
-	else if (ft_strncmp("rb", rule, 2))
-	{
-		rotate(&l->a, "r", NOPRINT);
-		rotate(&l->b, "r", NOPRINT);
-	}
-	else if (ft_strncmp("sa", rule, 2))
+	if (ft_strncmp("pb", rule, 2) == 0)
+		push(&l->a, &l->b, "b", NOPRINT);
+	else if (ft_strncmp("pa", rule, 2) == 0)
+		push(&l->b, &l->a, "a", NOPRINT);
+	else if (ft_strncmp("sa", rule, 2) == 0)
 		swap(&l->a, "a", NOPRINT);
-	else if (ft_strncmp("sb", rule, 2))
+	else if (ft_strncmp("sb", rule, 2) == 0)
 		swap(&l->b, "b", NOPRINT);
-	else if (ft_strncmp("rra", rule, 3))
+	else if (ft_strncmp("rra", rule, 3) == 0)
 		rev_rotate(&l->a, "a", NOPRINT);
-	else if (ft_strncmp("rrb", rule, 3))
+	else if (ft_strncmp("rrb", rule, 3) == 0)
 		rev_rotate(&l->b, "b", NOPRINT);
-	else if (ft_strncmp("rrr", rule, 3))
-	{
-		rev_rotate(&l->a, "r", NOPRINT);
-		rev_rotate(&l->b, "r", NOPRINT);
-	}
+	else if (ft_strncmp("rrr", rule, 3) == 0)
+		combine_rotate(l, rule);
+	else if (ft_strncmp("ra", rule, 2) == 0)
+		rotate(&l->a, "a", NOPRINT);
+	else if (ft_strncmp("rb", rule, 2) == 0)
+		rotate(&l->b, "b", NOPRINT);
+	else if (ft_strncmp("rr", rule, 2) == 0)
+		combine_rotate(l, rule);
 	else
 		error_handler(l, rule);
 	free(rule);
@@ -75,5 +73,20 @@ void	error_handler(t_stacks *l, char *rule)
 	ft_printf("Rule is invalid: %s\n", rule);
 	list_clear(l);
 	free(rule);
+	get_next_line(-1);
 	exit(EXIT_FAILURE);
+}
+
+void	combine_rotate(t_stacks *l, char *rule)
+{
+	if (ft_strncmp("rrr", rule, 3) == 0)
+	{
+		rev_rotate(&l->a, "a", NOPRINT);
+		rev_rotate(&l->b, "b", NOPRINT);
+	}
+	else if (ft_strncmp("rr", rule, 2) == 0)
+	{
+		rotate(&l->a, "a", NOPRINT);
+		rotate(&l->b, "b", NOPRINT);
+	}
 }

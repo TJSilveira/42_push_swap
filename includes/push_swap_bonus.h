@@ -20,6 +20,6 @@
 void	execute_rules(t_stacks *l);
 void	operation_redirect(t_stacks *l, char *rule);
 void	error_handler(t_stacks *l, char *rule);
-void	release_stacks(t_stacks *l);
+void	combine_rotate(t_stacks *l, char *rule);
 
 #endif

@@ -38,13 +38,17 @@ SRC_FILES = push_swap.c \
 			init_stack.c
 
 SRC_FILES_BONUS = checker.c \
-					init_stack.c \
+					utils1.c \
+					utils2.c \
+					utils3.c \
 					operations_push.c \
 					operations_swap.c \
 					operations_rotate.c \
 					print_stacks.c \
-					utils2.c \
-					utils1.c
+					engine_1.c \
+					engine_2.c \
+					engine_3.c \
+					init_stack.c
 
 # Object Files
 OBJS_FILES			= $(SRC_FILES:.c=.o)
