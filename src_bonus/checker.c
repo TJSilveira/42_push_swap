@@ -43,25 +43,25 @@ void	execute_rules(t_stacks *l)
 
 void	operation_redirect(t_stacks *l, char *rule)
 {
-	if (ft_strncmp("pb", rule, 2) == 0)
+	if (ft_strncmp("pb\n", rule, 3) == 0)
 		push(&l->a, &l->b, "b", NOPRINT);
-	else if (ft_strncmp("pa", rule, 2) == 0)
+	else if (ft_strncmp("pa\n", rule, 3) == 0)
 		push(&l->b, &l->a, "a", NOPRINT);
-	else if (ft_strncmp("sa", rule, 2) == 0)
+	else if (ft_strncmp("sa\n", rule, 3) == 0)
 		swap(&l->a, "a", NOPRINT);
-	else if (ft_strncmp("sb", rule, 2) == 0)
+	else if (ft_strncmp("sb\n", rule, 3) == 0)
 		swap(&l->b, "b", NOPRINT);
-	else if (ft_strncmp("rra", rule, 3) == 0)
+	else if (ft_strncmp("rra\n", rule, 4) == 0)
 		rev_rotate(&l->a, "a", NOPRINT);
-	else if (ft_strncmp("rrb", rule, 3) == 0)
+	else if (ft_strncmp("rrb\n", rule, 4) == 0)
 		rev_rotate(&l->b, "b", NOPRINT);
-	else if (ft_strncmp("rrr", rule, 3) == 0)
+	else if (ft_strncmp("rrr\n", rule, 4) == 0)
 		combine_rotate(l, rule);
-	else if (ft_strncmp("ra", rule, 2) == 0)
+	else if (ft_strncmp("ra\n", rule, 3) == 0)
 		rotate(&l->a, "a", NOPRINT);
-	else if (ft_strncmp("rb", rule, 2) == 0)
+	else if (ft_strncmp("rb\n", rule, 3) == 0)
 		rotate(&l->b, "b", NOPRINT);
-	else if (ft_strncmp("rr", rule, 2) == 0)
+	else if (ft_strncmp("rr\n", rule, 3) == 0)
 		combine_rotate(l, rule);
 	else
 		error_handler(l, rule);
@@ -70,7 +70,7 @@ void	operation_redirect(t_stacks *l, char *rule)
 
 void	error_handler(t_stacks *l, char *rule)
 {
-	ft_printf("Rule is invalid: %s\n", rule);
+	ft_printf("Error\n");
 	list_clear(l);
 	free(rule);
 	get_next_line(-1);
@@ -79,12 +79,12 @@ void	error_handler(t_stacks *l, char *rule)
 
 void	combine_rotate(t_stacks *l, char *rule)
 {
-	if (ft_strncmp("rrr", rule, 3) == 0)
+	if (ft_strncmp("rrr\n", rule, 4) == 0)
 	{
 		rev_rotate(&l->a, "a", NOPRINT);
 		rev_rotate(&l->b, "b", NOPRINT);
 	}
-	else if (ft_strncmp("rr", rule, 2) == 0)
+	else if (ft_strncmp("rr\n", rule, 3) == 0)
 	{
 		rotate(&l->a, "a", NOPRINT);
 		rotate(&l->b, "b", NOPRINT);
